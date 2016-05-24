@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogs>
+	<!-- alogic-framework的内置服务 -->
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog" 
+		xrc="/com/logicbus/service/servant.addons.xml"
+		class="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		name="inner"/>
+		
+	<!-- 课程 -->
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		xrc="/conf/servant/servant.course.xml" class="App" name="inner" />
+	
+	<!-- 教务员 -->	
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		xrc="/conf/servant/servant.manager.xml" class="App" name="inner" />
+	
+	<!-- 学生 -->
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		xrc="/conf/servant/servant.student.xml" class="App" name="inner" />
+	
+	<!-- 教师 -->	
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		xrc="/conf/servant/servant.teacher.xml" class="App" name="inner" />
+		
+		
+	<!-- ketty的内置服务 -->		
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog" 
+		xrc="/com/ketty/service/servant.xml"
+		class="com.ketty.service.Agent"
+		name="inner"/>
+		
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog" 
+		xrc="/com/alogic/saloon/service/servant.xml"
+		class="com.alogic.saloon.core.Saloon"
+		name="inner"/>
+</catalogs>

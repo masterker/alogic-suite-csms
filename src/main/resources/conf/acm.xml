@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ac module="com.alogic.suite.ac.ClientAccessController">
+	<call id="tokenInfo" module="com.logicbus.remote.impl.http.HttpCall">
+		<dests>
+			<dest uri="http://${server.itportal}/services/login/TokenInfo" />
+		</dests>
+		<request>
+			<query>
+				<app selector="SingleField" selector-id="app" selector-field="app"
+					selector-default="" />
+				<ip selector="SingleField" selector-id="ip" selector-field="ip"
+					selector-default="" />
+				<token selector="SingleField" selector-id="token"
+					selector-field="token" selector-default="" />
+			</query>
+		</request>
+		<response>
+			<data>
+				<field id="userId" path="$.user.id" />
+				<field id="isLogin" path="$.user.isLogin" />
+				<field id="roles" path="$.user.roles" />
+			</data>
+		</response>
+	</call>
+</ac>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<source>
+	<context>
+	
+		<cache id="managers" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						manager_id id,
+                        manager_name name,
+                        manager_password password,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        manager
+					 WHERE 
+                        manager_id=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+	
+		<cache id="teachers" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						teacher_id id,
+                        teacher_name name,
+                        teacher_password password,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        teacher
+					 WHERE 
+                        teacher_id=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+		
+		<cache id="students" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						student_no id,
+                        student_name name,
+                        student_gender gender,
+                        student_grade grade,
+                        student_major major,
+                        student_password password,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        student
+					 WHERE 
+                        student_no=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+		
+		<cache id="courses" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						course_id id,
+                        course_no no,
+                        course_name name,
+                        teacher_id teacherId,
+                        course_size courseSize,
+                        course_enrollment courseEnrollment,
+                        deadline deadline,
+                        course_credits courseCredits,
+                        course_period coursePeriod,
+                        apply_time applyTime,
+                        course_restriction_grade courseRestrictionGrade,
+                        course_restriction_major courseRestrictionMajor,
+                        course_status status,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        course
+					 WHERE 
+                        course_id=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+		
+		<cache id="courserooms" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						course_room_id id,
+						room_id roomId,
+						room_time roomTime,
+						idle idle,
+						course_id courseId,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        course_room_list 
+					 WHERE 
+                        course_room_id=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+		
+		<cache id="studentcourses" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.logicbus.provider.SingleSQL"
+				sql="SELECT 
+						student_course_id id,
+						student_no studentNo,
+						course_id courseId,
+						course_grade courseGrade,
+						evaluation_grade evaluationGrade,
+                        unix_timestamp(create_date)*1000 createDate,
+				    	unix_timestamp(update_date)*1000 updateDate
+                     FROM 
+                        student_course_list 
+					 WHERE 
+                        student_course_id=?"
+				dbcp="csms">
+			</provider>
+		</cache>
+		
+		<cache id="sessions" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.alogic.suite.cache.provider.Null">
+			</provider>
+		</cache>
+		<cache id="roles" module="com.alogic.cache.local.HashCacheStore">
+			<provider module="com.alogic.suite.cache.provider.Null">
+			</provider>
+		</cache>    
+		<cache id="userroles" module="com.alogic.cache.local.HashCacheStore" >
+            <provider module="com.alogic.suite.cache.provider.Null">
+            </provider>
+        </cache>
+	</context>
+</source>

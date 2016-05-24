@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<description>alogic web</description>
+	<display-name>alogic web</display-name>
+	
+	<servlet>
+		<display-name>MessageRouter</display-name>
+		<servlet-name>MessageRouter</servlet-name>
+		<servlet-class>com.anysoft.webloader.ServletAgent</servlet-class>
+		<init-param>
+			<param-name>handler</param-name>
+			<param-value>com.logicbus.backend.server.http.MessageRouterServletHandler</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MessageRouter</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<listener>
+		<listener-class>com.anysoft.webloader.WebAppMain</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>app.class</param-name>
+		<param-value>com.ketty.core.webapp.FrontEnd</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>ketty.web</param-name>
+		<param-value>file:///${ketty.home}/conf/ketty.web.xml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>updater.auto</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>updater.home</param-name>
+		<param-value>${ketty.home}/libext</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>settings.master</param-name>
+		<param-value>${master.home}/profile.frontend.xml</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>settings.secondary</param-name>
+		<param-value>${secondary.home}/profile.frontend.xml</param-value>
+	</context-param>		
+</web-app>

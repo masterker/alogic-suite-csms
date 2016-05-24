@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds>
+	<ds module="com.logicbus.dbcp.impl.InnerContext">
+		<dbcp
+	    	id = "csms"
+	    	driver = "org.mariadb.jdbc.Driver"
+	    	url = "${csms.db.server}"
+	    	username = "${csms.db.username}"
+	    	password = "${csms.db.password}"
+	    	coder = "DES3"
+	    	maxActive = "30" 
+	    	maxIdle = "5"
+	    	maxWait = "10000"
+	    	timeout = "3600"
+	    />
+	</ds>
+</ds>

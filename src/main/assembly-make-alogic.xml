@@ -1,0 +1,93 @@
+<assembly xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly.xsd">
+	<id>alogic</id>
+	<formats>
+		<format>war</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>src/main/webapp</directory>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${project.build.directory}/classes</directory>
+			<outputDirectory>/WEB-INF/classes</outputDirectory>
+		</fileSet>				
+	</fileSets>
+    <dependencySets>       
+        <dependencySet>
+            <outputDirectory>/WEB-INF/lib</outputDirectory>
+            <scope>runtime</scope>           
+            <excludes>
+            	<!-- 下面是会部署在ketty的lib目录 -->
+            	<!-- begin -->
+            	<exclude>com.github.alogic:alogic-ketty-*</exclude>
+ 				<exclude>com.github.alogic:alogic-common*</exclude>
+ 				<exclude>com.github.alogic:alogic-core*</exclude>
+ 				<exclude>com.github.alogic:alogic-addons*</exclude>
+ 				<exclude>com.github.alogic:alogic-cache*</exclude>
+ 				<exclude>com.github.alogic:alogic-dbcp*</exclude>
+ 				<exclude>com.github.alogic:alogic-doer*</exclude>
+ 				<exclude>com.github.alogic:alogic-example*</exclude>
+ 				<exclude>com.github.alogic:alogic-jms*</exclude>
+ 				<exclude>com.github.alogic:alogic-kvalue*</exclude>
+ 				<exclude>com.github.alogic:alogic-blob*</exclude>
+ 				<exclude>com.github.alogic:alogic-remote*</exclude>
+ 				<exclude>com.github.alogic:alogic-seq*</exclude>
+ 				<exclude>com.github.alogic:alogic-together*</exclude>
+ 				<exclude>com.github.alogic:alogic-vfs*</exclude>
+ 				<!-- end -->
+ 				
+ 				<!-- 下面是会部署在ketty的liblocal目录 -->
+            	<!-- begin -->
+            	<exclude>org.mariadb.jdbc:*</exclude> 	
+            	<exclude>net.java.dev.jna:jna*</exclude>
+            	
+            	<exclude>log4j:*</exclude>
+            	<exclude>org.slf4j:*</exclude>
+            	
+            	<exclude>org.apache.zookeeper:*</exclude>
+            	<exclude>io.netty:netty*</exclude>
+            	<exclude>junit:junit*</exclude>
+            	<exclude>jline:jline*</exclude>
+            	<exclude>javax.jms:javax.jms-api*</exclude>
+            	<exclude>org.hamcrest:hamcrest-core*</exclude>
+            	
+            	<exclude>net.minidev:json-smart*</exclude>
+            	<exclude>com.jayway.jsonpath:json-path*</exclude>
+            	<exclude>javax.servlet:javax.servlet-api*</exclude>
+            	<exclude>javax.servlet:servlet-api*</exclude>
+            	
+            	<exclude>org.eclipse.jetty:*</exclude>
+            	<exclude>org.mortbay.jetty:*</exclude>
+            	<exclude>com.sun.jersey:*</exclude>
+            	
+            	<exclude>commons-*:*</exclude>
+            	<exclude>org.apache.commons:commons-*</exclude>
+            	
+            	<exclude>org.fusesource:sigar</exclude>
+            	<!-- end -->
+            	
+            	<!-- 下面是会部署hadoop-yarn环境中 -->
+            	<!-- begin -->
+            	<exclude>org.apache.hadoop:*</exclude>
+            	<exclude>org.apache.httpcomponents:*</exclude>
+            	<exclude>com.google.guava:*</exclude>
+            	<exclude>javax.activation:*</exclude>
+            	<exclude>org.apache.avro:*</exclude>
+            	<exclude>com.thoughtworks.paranamer:*</exclude>
+            	<exclude>org.xerial.snappy:*</exclude>
+            	<exclude>javax.xml.stream:*</exclude>
+            	<exclude>xmlenc:xmlenc*</exclude>
+            	<exclude>org.tukaani:xz*</exclude>
+            	<exclude>com.google.code.findbugs:*</exclude>
+            	<exclude>javax.xml.bind:*</exclude>
+            	<exclude>org.codehaus.jackson:*</exclude>
+            	<!-- end -->
+            	
+            </excludes>        
+			<useProjectArtifact>false</useProjectArtifact>                                                      
+        </dependencySet>     
+    </dependencySets>
+</assembly>

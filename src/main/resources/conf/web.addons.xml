@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webapp-addons>
+	<!-- 扩展的servlet配置，用于下载blob文件 -->
+	<servlet display-name="BlobDownloader" servlet-name="BlobDownloader" servlet-class="com.anysoft.webloader.ServletAgent">
+		<init-param param-name="handler" param-value="com.logicbus.backend.server.http.MessageRouterServletHandler"/>
+		<init-param param-name="normalizer" param-value="com.alogic.blob.service.Download$TheNormalizer"/>
+		<init-param param-name="cacheAllowed" param-value="true"/>
+		<servlet-mapping url-pattern="/blob/*"/>
+	</servlet>
+	<!-- 扩展的servlet配置，用于AppRedirector -->
+	<servlet display-name="AppRedirector" servlet-name="AppRedirector" servlet-class="com.anysoft.webloader.ServletAgent">
+		<init-param param-name="handler" param-value="com.ketty.util.AppRedirector"/>
+		<servlet-mapping url-pattern="/webapps/*"/>
+	</servlet>
+	<servlet display-name="Proxy" servlet-name="Proxy"
+		servlet-class="com.anysoft.webloader.ServletAgent">
+		<init-param param-name="handler"
+			param-value="com.logicbus.backend.server.http.MessageRouterServletHandler" />
+		<init-param param-name="normalizer"
+			param-value="com.logicbus.backend.ProxyNormalizer" />
+		<servlet-mapping url-pattern="/proxy/*" />
+	</servlet>
+	<servlet display-name="AppProxy" servlet-name="AppProxy"
+		servlet-class="com.anysoft.webloader.ServletAgent">
+		<init-param param-name="handler"
+			param-value="com.logicbus.backend.server.http.MessageRouterServletHandler" />
+		<init-param param-name="normalizer"
+			param-value="com.logicbus.backend.AppProxyNormalizer" />
+		<servlet-mapping url-pattern="/apps/*" />
+	</servlet>		
+	<!-- 扩展的servlet配置，用于支持comet服务 -->
+	<servlet display-name="CometService" servlet-name="CometService" servlet-class="com.anysoft.webloader.ServletAgent">
+		<init-param param-name="handler" param-value="com.ketty.comet.CometServletHandler"/>
+		<servlet-mapping url-pattern="/comet/*"/>
+	</servlet>	
+	<!-- 扩展会话监听器 -->
+	<!-- <session listener-class="com.alogic.suite.session.SessionCleaner">
+	</session> -->
+	<!-- 定时器监听器 -->
+    <listener listener-class="com.alogic.timer.webapp.Bootstrap"/>
+    
+</webapp-addons>
