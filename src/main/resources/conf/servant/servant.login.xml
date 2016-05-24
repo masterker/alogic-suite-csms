@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog name="root">
+	<catalog name="csms">
+		<catalog name="login">
+		
+			<service 
+				id = "LoginCode" 
+				name="LoginCode" 
+				note="登录验证码" 
+				visible="public" 
+				log = "brief" 
+				module="com.alogic.csms.service.login.LoginCode">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+				</properties>
+			</service>
+			
+			<service 
+				id = "Login" 
+				name="Login" 
+				note="系统登录" 
+				visible="public" 
+				log = "brief" 
+				module="com.alogic.csms.service.login.SSOLogin">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="dbSource" value="csms"/>
+					<parameter id="log.on" value="true"/>
+					<parameter id="log.type" value="User"/>
+					<parameter id="log.content" value="用户${loginId}成功登录."/>
+				</properties>
+			</service>
+			
+			<service 
+				id = "Logout" 
+				name="Logout" 
+				note="系统登出" 
+				visible="public" 
+				log = "brief" 
+				module="com.alogic.csms.service.login.SSOLogout">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="dbSource" value="csms"/>
+					<parameter id="log.on" value="true"/>
+					<parameter id="log.type" value="User"/>
+					<parameter id="log.content" value="用户${userId}成功退出登录"/>
+				</properties>
+			</service>
+			
+			<service 
+				id = "ChangePwd" 
+				name="ChangePwd" 
+				note="修改登录密码" 
+				visible="protected" 
+				log = "brief" 
+				module="com.alogic.csms.service.login.ChangePassword">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="dbSource" value="csms"/>
+					<parameter id="log.on" value="true"/>
+					<parameter id="log.type" value="User"/>
+					<parameter id="log.content" value="成功修改密码."/>
+				</properties>
+			</service>
+			
+			<service 
+				id = "Current" 
+				name="Current" 
+				note="获取当前登录信息" 
+				visible="public" 
+				log = "brief" 
+				module="com.alogic.csms.service.login.SSOCurrentLogin">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="dbSource" value="csms"/>
+					<parameter id="log.on" value="false"/>
+					<parameter id="cache.id" value="users" />
+				</properties>
+			</service>
+			
+			<service 
+				id = "CheckPrivilege" 
+				name="CheckPrivilege" 
+				note="检查是否具备指定的权限" 
+				visible="public" 
+				log = "none" 
+				module="com.alogic.csms.service.login.CheckPrivilege">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="log.on" value="false"/>
+					<parameter id="cache.id" value="userroles" />
+				</properties>
+			</service>
+			
+			<service 
+				id = "CheckMenu" 
+				name="CheckMenu" 
+				note="检查指定菜单的权限" 
+				visible="public" 
+				log = "none" 
+				module="com.alogic.csms.service.login.CheckMenu">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="log.on" value="false"/>
+					<parameter id="cache.id" value="userroles" />
+				</properties>
+			</service>
+			
+			<service 
+				id = "TokenInfo" 
+				name="TokenInfo" 
+				note="获取Token的信息" 
+				visible="public" 
+				log = "none" 
+				module="com.alogic.csms.service.login.SSOTokenInfo">
+				<properties>
+					<parameter id="servant.maxActive" value="100"/>
+					<parameter id="servant.maxIdle" value="10"/>
+					<parameter id="cache.id" value="sessions" />
+					<parameter id="log.on" value="false"/>
+				</properties>
+			</service>
+				
+		</catalog>						
+	</catalog>
+</catalog>
