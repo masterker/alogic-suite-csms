@@ -23,7 +23,7 @@
 								course_id id, 
 								course_no courseNo, 
 								course_name courseName, 
-								teacher_id teacherId, 
+								teacher_no teacherNo, 
 								course_size courseSize,
 								course_enrollment courseEnrollment,
 								deadline deadline,
@@ -39,7 +39,7 @@
 							  	course
 							WHERE 
 								1 = 1
-								#{not_nvl(teacherId,' AND teacher_id = ' + bind('teacherId'))} 
+								#{not_nvl(teacherNo,' AND teacher_no = ' + bind('teacherNo'))} 
 						" />
 				</properties>
 			</service>
@@ -68,7 +68,7 @@
 	                    		course
 	                        		(
 	                        		course_id
-	                        		,teacher_id 
+	                        		,teacher_no 
 		                         	,course_name 
 		                         	,course_size 
 		                         	,course_credits 
@@ -83,7 +83,7 @@
 	                    		values 
 	                        		(
 	                        		#{bind('id')} 
-	                        		,#{bind('teacherId')} 
+	                        		,#{bind('teacherNo')} 
 	                        		,#{bind('courseName')} 
 	                        		,#{bind('courseSize')} 
 	                        		,#{bind('courseCredits')} 

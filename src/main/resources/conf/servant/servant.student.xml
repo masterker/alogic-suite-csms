@@ -55,7 +55,7 @@
 					<parameter id="sql.Insert"
 						value="
 	                    	INSERT INTO
-	                    		manager
+	                    		student
 	                        		(
 	                        		student_no 
 		                         	#{not_nvl(name,',student_name')} 

@@ -4,6 +4,32 @@
 		<catalog name="teacher">
 		
 			<service 
+				id="IdCheck" 
+				name="IdCheck" 
+				note="检查教师工号是否有效"
+				visible="public" 
+				log="none" 
+				module="com.alogic.idu.service.IdExist">
+				<properties>
+					<parameter id="servant.maxActive" value="10" />
+					<parameter id="servant.maxIdle" value="1" />
+					<parameter id="data.root" value="id" />
+					<parameter id="dbSource" value="csms" />
+					<parameter id="log.on" value="false" />
+					<parameter id="privilege" value="view_csms" />
+					<parameter id="sql.IdExist"
+						value="
+		                    SELECT 
+		                    	count(teacher_no) 
+		                    FROM 
+		                    	teacher 
+		                    WHERE 
+		                    	teacher_no =?
+	                " />
+				</properties>
+			</service>
+		
+			<service 
 				id="New" 
 				name="New" 
 				note="新增教师" 
@@ -24,18 +50,20 @@
 					<parameter id="sql.Insert"
 						value="
 	                    	INSERT INTO
-	                    		manager
+	                    		teacher
 	                        		(
-		                         	create_date 
+	                        		teacher_no 
 		                         	#{not_nvl(name,',teacher_name')} 
 		                         	#{not_nvl(password,',teacher_password')} 
+		                         	,create_date 
 		                         	,update_date
 	                        		) 
 	                    		values 
 	                        		(
-		                            now() 
+	                        		#{bind('id')} 
 		                            #{not_nvl(name,',' + bind('name'))} 
 		                            #{not_nvl(password,',' + bind('password'))} 
+		                            ,now() 
 		                            ,now()
 	                            	)
 					 	" />
@@ -90,7 +118,7 @@
 						   #{not_nvl(name,', teacher_name='+bind('name'))} 
 						   #{not_nvl(password,', teacher_password='+bind('password'))} 
 						WHERE 
-						   teacher_id = #{bind('id')}
+						   teacher_no = #{bind('id')}
                     " />
 				</properties>
 			</service>
@@ -119,7 +147,7 @@
 		                     FROM 
 		                         teacher 
 		                     WHERE 
-		                         teacher_id = #{bind('id')}
+		                         teacher_no = #{bind('id')}
 						" />
 				</properties>
 			</service>

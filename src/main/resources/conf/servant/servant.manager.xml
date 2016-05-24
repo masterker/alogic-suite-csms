@@ -4,6 +4,32 @@
 		<catalog name="manager">
 			
 			<service 
+				id="IdCheck" 
+				name="IdCheck" 
+				note="检查教务员工号是否有效"
+				visible="public" 
+				log="none" 
+				module="com.alogic.idu.service.IdExist">
+				<properties>
+					<parameter id="servant.maxActive" value="10" />
+					<parameter id="servant.maxIdle" value="1" />
+					<parameter id="data.root" value="id" />
+					<parameter id="dbSource" value="csms" />
+					<parameter id="log.on" value="false" />
+					<parameter id="privilege" value="view_csms" />
+					<parameter id="sql.IdExist"
+						value="
+		                    SELECT 
+		                    	count(manager_no) 
+		                    FROM 
+		                    	manager 
+		                    WHERE 
+		                    	manager_no =?
+	                " />
+				</properties>
+			</service>
+			
+			<service 
 				id="New" 
 				name="New" 
 				note="新增管理员" 
@@ -26,16 +52,18 @@
 	                    	INSERT INTO
 	                    		manager
 	                        		(
-		                         	create_date 
+	                        		manager_no 
 		                         	#{not_nvl(name,',manager_name')} 
 		                         	#{not_nvl(password,',manager_password')} 
+		                         	,create_date 
 		                         	,update_date
 	                        		) 
 	                    		values 
 	                        		(
-		                            now() 
+	                        		#{bind('id')} 
 		                            #{not_nvl(name,',' + bind('name'))} 
 		                            #{not_nvl(password,',' + bind('password'))} 
+		                            ,now() 
 		                            ,now()
 	                            	)
 					 	" />
@@ -90,7 +118,7 @@
 							   #{not_nvl(name,', manager_name='+bind('name'))} 
 							   #{not_nvl(password,', manager_password='+bind('password'))} 
 							WHERE 
-							   teacher_id = #{bind('id')}
+							   manager_no = #{bind('id')}
                     	" />
 				</properties>
 			</service>
@@ -119,7 +147,7 @@
 		                     FROM 
 		                         manager
 		                     WHERE 
-		                         manager_id = #{bind('id')}
+		                         manager_no = #{bind('id')}
 						" />
 				</properties>
 			</service>
