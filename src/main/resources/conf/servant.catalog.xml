@@ -6,6 +6,10 @@
 		class="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
 		name="inner"/>
 		
+	<!-- 登录 -->	
+	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
+		xrc="/conf/servant/servant.login.xml" class="App" name="inner" />
+		
 	<!-- 课程 -->
 	<catalog module="com.logicbus.models.servant.impl.XMLResourceServantCatalog"
 		xrc="/conf/servant/servant.course.xml" class="App" name="inner" />
