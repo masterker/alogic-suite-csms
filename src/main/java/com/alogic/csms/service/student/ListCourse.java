@@ -19,7 +19,6 @@ import com.logicbus.models.servant.ServiceDescription;
  * 查询指定学生所选课程列表
  * 
  * @author limf
- * 
  */
 public class ListCourse extends IDUBase {
 

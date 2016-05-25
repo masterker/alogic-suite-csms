@@ -18,7 +18,6 @@ import com.logicbus.models.servant.ServiceDescription;
  * 登录验证码服务
  * 
  * @author limf
- * 
  */
 public class LoginCode extends Servant {
 	

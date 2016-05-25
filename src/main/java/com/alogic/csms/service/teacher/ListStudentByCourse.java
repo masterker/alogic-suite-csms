@@ -19,7 +19,6 @@ import com.logicbus.models.servant.ServiceDescription;
  * 教师查看选课学生列表
  * 
  * @author limf
- * 
  */
 public class ListStudentByCourse extends IDUBase {
 
