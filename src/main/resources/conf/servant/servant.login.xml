@@ -79,7 +79,9 @@
 					<parameter id="servant.maxIdle" value="10"/>
 					<parameter id="dbSource" value="csms"/>
 					<parameter id="log.on" value="false"/>
-					<parameter id="cache.id" value="users" />
+					<!-- <parameter id="cache.manager.id" value="managers" />
+					<parameter id="cache.teacher.id" value="teachers" />
+					<parameter id="cache.student.id" value="students" /> -->
 				</properties>
 			</service>
 			

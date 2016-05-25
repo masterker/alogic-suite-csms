@@ -48,14 +48,14 @@
     
     <!-- 下面是访问控制器配置 -->
     <!-- begin -->
-    <!-- <parameter id="acm.master" value="java:///conf/acm.xml#App"/> -->
+    <parameter id="acm.master" value="java:///conf/acm.xml#App"/>
 	<!-- end -->
-    <!-- <parameter 
+    <parameter 
         id="guard.on" value="true" note="是否开启服务权限控制"/>		
     <parameter 
-        id="guard.module" value="com.alogic.suite.ac.ServiceGuard" note="服务权限控制类名"/>
+        id="guard.module" value="com.alogic.csms.ac.ServiceGuard" note="服务权限控制类名"/>
     <parameter 
-        id="session.manager" value="com.alogic.suite.session.DistributedSessionManager" note="会话管理器"/> -->
+        id="session.manager" value="com.alogic.csms.session.DistributedSessionManager" note="会话管理器"/>
     <!--  end -->
 </settings>
 

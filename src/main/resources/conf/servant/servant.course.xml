@@ -7,7 +7,7 @@
 				id="List" 
 				name="List" 
 				note="教务员查看全部课程列表"
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.ListAll">
 				<properties>
@@ -48,7 +48,7 @@
 				id="New" 
 				name="New" 
 				note="教师开设课程" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.csms.service.course.New">
 				<properties>
@@ -103,7 +103,7 @@
 				id="ById" 
 				name="ById" 
 				note="通过课程ID查询课程信息" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.idu.service.QueryById">
 				<properties>
@@ -124,7 +124,7 @@
 				id="Update" 
 				name="Update" 
 				note="更新课程信息" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -157,7 +157,7 @@
 				id="Pass" 
 				name="Pass" 
 				note="审核课程" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -191,7 +191,7 @@
 				id="Reject" 
 				name="Reject" 
 				note="驳回课程" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -222,7 +222,7 @@
 				id="RoomList" 
 				name="RoomList" 
 				note="查询指定时间可用教室列表"
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.ListAll">
 				<properties>
@@ -256,7 +256,7 @@
 				id="BindingRoom" 
 				name="BindingRoom" 
 				note="为课程分配教室" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>

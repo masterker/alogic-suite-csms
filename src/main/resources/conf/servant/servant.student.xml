@@ -7,7 +7,7 @@
 				id="List" 
 				name="List" 
 				note="教务员查看全部学生列表"
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.ListAll">
 				<properties>
@@ -38,7 +38,7 @@
 				id="New" 
 				name="New" 
 				note="新增学生" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.idu.service.NewById">
 				<properties>
@@ -85,7 +85,7 @@
 				id="IdCheck" 
 				name="IdCheck" 
 				note="检查学生学号是否有效"
-				visible="public" 
+				visible="protected" 
 				log="none" 
 				module="com.alogic.idu.service.IdExist">
 				<properties>
@@ -111,7 +111,7 @@
 				id="ById" 
 				name="ById" 
 				note="通过学生ID查询学生个人信息" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.idu.service.QueryById">
 				<properties>
@@ -132,7 +132,7 @@
 				id="Update" 
 				name="Update" 
 				note="更新学生个人信息" 
-				visible="public"
+				visible="protected"
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -167,7 +167,7 @@
 				id="Delete" 
 				name="Delete" 
 				note="删除学生"
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -196,7 +196,7 @@
 				id="SelectCourse" 
 				name="SelectCourse" 
 				note="学生选课" 
-				visible="public" 
+				visible="protected" 
 				log="none" 
 				module="com.alogic.csms.service.student.SelectCourse">
 				<properties>
@@ -239,7 +239,7 @@
 				id="DropCourse" 
 				name="DropCourse" 
 				note="学生退课" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.csms.service.student.DropCourse">
 				<properties>
@@ -269,7 +269,7 @@
 				id="ListCourse" 
 				name="ListCourse" 
 				note="查询指定学生所选课程列表" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.csms.service.student.ListCourse">
 				<properties>
@@ -286,7 +286,7 @@
 				id="EvaluateCourse" 
 				name="EvaluateCourse" 
 				note="学生为指定课程评教" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -317,7 +317,7 @@
 				id="ViewGrade" 
 				name="ViewGrade" 
 				note="学生查看成绩" 
-				visible="public" 
+				visible="protected" 
 				log="none" 
 				module="com.alogic.csms.service.student.ViewGrade">
 				<properties>

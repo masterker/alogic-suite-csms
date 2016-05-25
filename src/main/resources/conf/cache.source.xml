@@ -5,7 +5,7 @@
 		<cache id="managers" module="com.alogic.cache.local.HashCacheStore">
 			<provider module="com.logicbus.provider.SingleSQL"
 				sql="SELECT 
-						manager_id id,
+						manager_no id,
                         manager_name name,
                         manager_password password,
                         unix_timestamp(create_date)*1000 createDate,
@@ -13,7 +13,7 @@
                      FROM 
                         manager
 					 WHERE 
-                        manager_id=?"
+                        manager_no=?"
 				dbcp="csms">
 			</provider>
 		</cache>
@@ -21,7 +21,7 @@
 		<cache id="teachers" module="com.alogic.cache.local.HashCacheStore">
 			<provider module="com.logicbus.provider.SingleSQL"
 				sql="SELECT 
-						teacher_id id,
+						teacher_no id,
                         teacher_name name,
                         teacher_password password,
                         unix_timestamp(create_date)*1000 createDate,
@@ -29,7 +29,7 @@
                      FROM 
                         teacher
 					 WHERE 
-                        teacher_id=?"
+                        teacher_no=?"
 				dbcp="csms">
 			</provider>
 		</cache>

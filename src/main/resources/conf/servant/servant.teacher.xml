@@ -7,7 +7,7 @@
 				id="IdCheck" 
 				name="IdCheck" 
 				note="检查教师工号是否有效"
-				visible="public" 
+				visible="protected" 
 				log="none" 
 				module="com.alogic.idu.service.IdExist">
 				<properties>
@@ -33,7 +33,7 @@
 				id="New" 
 				name="New" 
 				note="新增教师" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.idu.service.NewById">
 				<properties>
@@ -74,7 +74,7 @@
 				id="ById" 
 				name="ById" 
 				note="通过教师ID查询教师个人信息" 
-				visible="public"
+				visible="protected"
 				log="none" 
 				module="com.alogic.idu.service.QueryById">
 				<properties>
@@ -95,7 +95,7 @@
 				id="Update" 
 				name="Update" 
 				note="更新教师个人信息" 
-				visible="public"
+				visible="protected"
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -127,7 +127,7 @@
 				id="Delete" 
 				name="Delete" 
 				note="删除教师"
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
@@ -156,7 +156,7 @@
 				id="StudentList" 
 				name="StudentList" 
 				note="教师查看选课学生列表" 
-				visible="public" 
+				visible="protected" 
 				log="none" 
 				module="com.alogic.csms.service.teacher.ListStudentByCourse">
 				<properties>
@@ -175,7 +175,7 @@
 				id="RecordCourseGrade" 
 				name="RecordCourseGrade" 
 				note="提交成绩" 
-				visible="public" 
+				visible="protected" 
 				log="brief" 
 				module="com.alogic.idu.service.UpdateById">
 				<properties>
