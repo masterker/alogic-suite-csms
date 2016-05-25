@@ -22,7 +22,7 @@
 				note="系统登录" 
 				visible="public" 
 				log = "brief" 
-				module="com.alogic.csms.service.login.SSOLogin">
+				module="com.alogic.csms.service.login.Login">
 				<properties>
 					<parameter id="servant.maxActive" value="100"/>
 					<parameter id="servant.maxIdle" value="10"/>
@@ -39,7 +39,7 @@
 				note="系统登出" 
 				visible="public" 
 				log = "brief" 
-				module="com.alogic.csms.service.login.SSOLogout">
+				module="com.alogic.csms.service.login.Logout">
 				<properties>
 					<parameter id="servant.maxActive" value="100"/>
 					<parameter id="servant.maxIdle" value="10"/>
@@ -73,7 +73,7 @@
 				note="获取当前登录信息" 
 				visible="public" 
 				log = "brief" 
-				module="com.alogic.csms.service.login.SSOCurrentLogin">
+				module="com.alogic.csms.service.login.CurrentLogin">
 				<properties>
 					<parameter id="servant.maxActive" value="100"/>
 					<parameter id="servant.maxIdle" value="10"/>
@@ -113,21 +113,6 @@
 				</properties>
 			</service>
 			
-			<service 
-				id = "TokenInfo" 
-				name="TokenInfo" 
-				note="获取Token的信息" 
-				visible="public" 
-				log = "none" 
-				module="com.alogic.csms.service.login.SSOTokenInfo">
-				<properties>
-					<parameter id="servant.maxActive" value="100"/>
-					<parameter id="servant.maxIdle" value="10"/>
-					<parameter id="cache.id" value="sessions" />
-					<parameter id="log.on" value="false"/>
-				</properties>
-			</service>
-				
 		</catalog>						
 	</catalog>
 </catalog>
