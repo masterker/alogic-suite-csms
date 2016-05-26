@@ -57,7 +57,7 @@ http://localhost:9009/services/csms/login/LoginCode
 			note="登录验证码" 
 			visible="public" 
 			log = "brief" 
-			module="com.alogic.csms.service.login.LoginCode">
+			module="edu.fdu.csms.service.login.LoginCode">
 			<properties>
 				<parameter id="servant.maxActive" value="100"/>
 				<parameter id="servant.maxIdle" value="10"/>
@@ -66,7 +66,7 @@ http://localhost:9009/services/csms/login/LoginCode
 ```
 
 ### 实现模块
-本服务的实现模块为com.alogic.csms.service.login.LoginCode。
+本服务的实现模块为edu.fdu.csms.service.login.LoginCode。
 
 ### 相关数据库
 无

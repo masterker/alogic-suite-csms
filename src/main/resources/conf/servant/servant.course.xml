@@ -50,7 +50,7 @@
 				note="教师开设课程" 
 				visible="protected"
 				log="none" 
-				module="com.alogic.csms.service.course.New">
+				module="edu.fdu.csms.service.course.New">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />

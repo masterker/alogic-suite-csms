@@ -1,5 +1,5 @@
 // 包路径
-package com.alogic.csms.util;
+package edu.fdu.csms.util;
 
 // 依赖的类
 import com.anysoft.util.code.Coder;

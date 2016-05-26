@@ -158,7 +158,7 @@
 				note="教师查看选课学生列表" 
 				visible="protected" 
 				log="none" 
-				module="com.alogic.csms.service.teacher.ListStudentByCourse">
+				module="edu.fdu.csms.service.teacher.ListStudentByCourse">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />

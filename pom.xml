@@ -5,7 +5,7 @@
     <artifactId>alogic-suite</artifactId>
     <version>1.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>alogic-suite-csms</artifactId>
+  <artifactId>fdu-csms</artifactId>
   <packaging>war</packaging>
     <dependencies>
     	<dependency>

@@ -1,4 +1,4 @@
-package com.alogic.csms.util;
+package edu.fdu.csms.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

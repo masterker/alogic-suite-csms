@@ -198,7 +198,7 @@
 				note="学生选课" 
 				visible="protected" 
 				log="none" 
-				module="com.alogic.csms.service.student.SelectCourse">
+				module="edu.fdu.csms.service.student.SelectCourse">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
@@ -241,7 +241,7 @@
 				note="学生退课" 
 				visible="protected" 
 				log="brief" 
-				module="com.alogic.csms.service.student.DropCourse">
+				module="edu.fdu.csms.service.student.DropCourse">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
@@ -271,7 +271,7 @@
 				note="查询指定学生所选课程列表" 
 				visible="protected" 
 				log="brief" 
-				module="com.alogic.csms.service.student.ListCourse">
+				module="edu.fdu.csms.service.student.ListCourse">
 				<properties>
 					<parameter id="servant.maxActive" value="10" />
 					<parameter id="servant.maxIdle" value="1" />
@@ -319,7 +319,7 @@
 				note="学生查看成绩" 
 				visible="protected" 
 				log="none" 
-				module="com.alogic.csms.service.student.ViewGrade">
+				module="edu.fdu.csms.service.student.ViewGrade">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />

@@ -1,4 +1,4 @@
-package com.alogic.csms.service.manager;
+package edu.fdu.csms.service.manager;
 
 import java.sql.Connection;
 import java.util.ArrayList;

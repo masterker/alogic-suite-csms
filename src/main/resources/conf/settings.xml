@@ -55,7 +55,7 @@
     <parameter 
         id="guard.module" value="com.alogic.csms.ac.ServiceGuard" note="服务权限控制类名"/> -->
     <parameter 
-        id="session.manager" value="com.alogic.csms.session.CachedSessionManager" note="会话管理器"/>
+        id="session.manager" value="edu.fdu.csms.session.CachedSessionManager" note="会话管理器"/>
     <!--  end -->
 </settings>
 

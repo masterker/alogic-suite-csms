@@ -1,4 +1,4 @@
-package com.alogic.csms.session;
+package edu.fdu.csms.session;
 
 import java.util.ArrayList;
 import java.util.HashMap;

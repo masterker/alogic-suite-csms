@@ -1,4 +1,4 @@
-package com.alogic.csms.service.manager;
+package edu.fdu.csms.service.teacher;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ import com.logicbus.dbcp.sql.DBTools;
 import com.logicbus.models.servant.ServiceDescription;
 
 /**
- * 查询指定学生所选课程列表
+ * 教师查看选课学生列表
  * 
  * @author limf
  */
-public class ListCourseByStudent extends IDUBase {
+public class ListStudentByCourse extends IDUBase {
 
 	@Override
 	protected void onCreate(ServiceDescription sd, Properties p) throws ServantException {
@@ -29,10 +29,10 @@ public class ListCourseByStudent extends IDUBase {
 
 	@Override
 	protected void doIt(Context ctx, JsonMessage msg, Connection conn) throws Exception {
-		String studentNo = getArgument("studentNo", ctx);
+		String courseId = getArgument("courseId", ctx);
 
-		sqlQuery = "SELECT c.course_id AS courseId,c.course_no AS courseNo,c.course_name AS courseName,sc.evaluation_grade AS evaluationGrade,sc.course_grade AS courseGrade FROM student_course_list sc JOIN course c ON sc.course_id = c.course_id WHERE sc.student_no = "
-				+ studentNo;
+		sqlQuery = "SELECT s.student_no AS studentNo,s.student_name AS studentName,s.student_gender AS studentGender,s.student_grade AS studentGrade,s.student_major AS studentMajor FROM student_course_list sc JOIN student s ON sc.student_no = s.student_no WHERE sc.course_id = "
+				+ courseId;
 
 		processor = new Preprocessor(sqlQuery);
 

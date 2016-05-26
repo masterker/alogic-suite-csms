@@ -1,4 +1,4 @@
-package com.alogic.csms.ac;
+package edu.fdu.csms.ac;
 
 import com.alogic.cache.context.CacheSource;
 import com.alogic.cache.core.MultiFieldObject;
@@ -18,8 +18,7 @@ import com.logicbus.models.servant.ServiceDescription;
 /**
  * 基于登录会话的访问控制器
  * 
- * @author duanyy
- * 
+ * @author limf
  */
 public class SessionAccessController extends AbstractAccessController {
 	/**

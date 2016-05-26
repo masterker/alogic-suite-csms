@@ -1,4 +1,4 @@
-package com.alogic.csms.service.login;
+package edu.fdu.csms.service.login;
 
 import java.awt.Font;
 import java.util.Random;

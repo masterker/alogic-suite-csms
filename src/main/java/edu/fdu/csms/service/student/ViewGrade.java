@@ -1,4 +1,4 @@
-package com.alogic.csms.service.student;
+package edu.fdu.csms.service.student;
 
 import java.util.HashMap;
 import java.util.Map;

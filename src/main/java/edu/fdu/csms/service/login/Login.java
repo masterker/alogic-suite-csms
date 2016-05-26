@@ -1,4 +1,4 @@
-package com.alogic.csms.service.login;
+package edu.fdu.csms.service.login;
 
 import java.sql.Connection;
 import java.util.Map;
