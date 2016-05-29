@@ -78,10 +78,6 @@ public class SelectCourse extends IDUBase {
 			throw new ServantException("core.data_error", "选课时间已过！");
 		}
 
-		if (!(courseEnrollment < courseSize)) {
-			throw new ServantException("core.data_error", "课程人数达到上限!");
-		}
-
 		// 获取学生年级和专业
 		String studentNo = getArgument("studentNo", ctx);
 		String studentGrade = "";
@@ -95,6 +91,20 @@ public class SelectCourse extends IDUBase {
 			studentMajor = (String) student.get("major");
 		}
 
+		// 获取courseId list
+		String courseListSql = "SELECT course_id AS courseId from student_course_list WHERE student_no =" + studentNo;
+		List<Map<String, Object>> courseListResult = DBTools.listAsObject(conn, courseListSql);
+		for (Map<String, Object> course : courseListResult) {
+			String _courseId = course.get("courseId").toString();
+			if (courseId.equals(_courseId)) {
+				throw new ServantException("core.data_error", "请勿重复选课！");
+			}
+		}
+
+		if (!(courseEnrollment < courseSize)) {
+			throw new ServantException("core.data_error", "课程人数达到上限！");
+		}
+
 		// 判断选课年级和专业限制
 		String[] courseRestrictionGrades = courseRestrictionGrade.split(",");
 		if (!Arrays.asList(courseRestrictionGrades).contains(studentGrade)) {
@@ -105,11 +115,18 @@ public class SelectCourse extends IDUBase {
 			throw new ServantException("core.data_error", "你的所属专业不允许选择该课程！");
 		}
 
-		timeCountSql = "SELECT COUNT(room_time) FROM course_room_list WHERE course_id IN((SELECT course_id from student_course_list WHERE student_no ="
-				+ studentNo + ")," + courseId + ")";
-		int timeCount = DBTools.selectAsInt(conn, timeCountSql, 0);
-		if (timeCount > 1) {
-			throw new ServantException("core.data_error", "选课时间冲突，请检查课程表！");
+		// 判断选课时间冲突限制
+		String roomTimeListSql = "SELECT room_time AS time FROM course_room_list WHERE course_id =" + courseId;
+		List<Map<String, Object>> roomTimeListResult = DBTools.listAsObject(conn, roomTimeListSql);
+		for (Map<String, Object> roomTime : roomTimeListResult) {
+			String time = roomTime.get("time").toString();
+			String judgeSql = "SELECT COUNT(room_time) FROM course_room_list WHERE course_id IN(SELECT course_id AS courseId from student_course_list WHERE student_no ="
+					+ studentNo + ") AND room_time='" + time + "'";
+			int timeCount = 0;
+			timeCount = DBTools.selectAsInt(conn, judgeSql, 0);
+			if (timeCount >= 1) {
+				throw new ServantException("core.data_error", "选课时间冲突，请检查课程表！");
+			}
 		}
 
 		CacheStore cache = getCacheStore();
@@ -127,6 +144,13 @@ public class SelectCourse extends IDUBase {
 		} else {
 			DBTools.insert(conn, sql);
 		}
+
+		// courseEnrollment加1
+		courseEnrollment++;
+		String updateCourseEnrollmentSql = "UPDATE course SET course_enrollment=" + courseEnrollment
+				+ " WHERE course_id=" + courseId;
+		DBTools.update(conn, updateCourseEnrollmentSql);
+		clearCache(courseCacheId, courseId);
 
 		found = cache.get(id, true);
 		if (found != null) {
@@ -150,6 +174,26 @@ public class SelectCourse extends IDUBase {
 			throw new ServantException("core.cache_not_found", "The cache is not found,customCacheId=" + cacheId);
 		}
 		return store;
+	}
+
+	/**
+	 * 在相关缓存中清除指定的对象
+	 * 
+	 * @param cacheId
+	 *            缓存ID
+	 * @param id
+	 *            对象ID
+	 */
+	protected void clearCache(String cacheId, String id) {
+		if (!isNull(cacheId)) {
+			CacheSource cs = CacheSource.get();
+
+			CacheStore store = cs.get(cacheId);
+
+			if (store != null) {
+				store.expire(id);
+			}
+		}
 	}
 
 	protected String sqlInsert = "";

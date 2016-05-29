@@ -47,12 +47,14 @@ public class DropCourse extends IDUBase {
 
 		String courseId = getArgument("courseId", ctx);
 		Timestamp deadline = null;
+		Integer courseEnrollment = 0;
 		CacheStore courseCache = getCacheStore(courseCacheId);
 		MultiFieldObject courseFound = courseCache.get(courseId, true);
 		if (courseFound != null) {
 			Map<String, Object> course = new HashMap<String, Object>();
 			courseFound.toJson(course);
 			deadline = Timestamp.valueOf((String) course.get("deadline"));
+			courseEnrollment = Integer.parseInt((String) course.get("courseEnrollment"));
 		}
 
 		if (System.currentTimeMillis() > deadline.getTime()) {
@@ -67,6 +69,13 @@ public class DropCourse extends IDUBase {
 		} else {
 			DBTools.update(conn, sql);
 		}
+
+		// courseEnrollment减1
+		courseEnrollment--;
+		String updateCourseEnrollmentSql = "UPDATE course SET course_enrollment=" + courseEnrollment
+				+ " WHERE course_id=" + courseId;
+		DBTools.update(conn, updateCourseEnrollmentSql);
+		clearCache(courseCacheId, courseId);
 
 		clearCache(id);
 
@@ -94,6 +103,26 @@ public class DropCourse extends IDUBase {
 			throw new ServantException("core.cache_not_found", "The cache is not found,customCacheId=" + cacheId);
 		}
 		return store;
+	}
+
+	/**
+	 * 在相关缓存中清除指定的对象
+	 * 
+	 * @param cacheId
+	 *            缓存ID
+	 * @param id
+	 *            对象ID
+	 */
+	protected void clearCache(String cacheId, String id) {
+		if (!isNull(cacheId)) {
+			CacheSource cs = CacheSource.get();
+
+			CacheStore store = cs.get(cacheId);
+
+			if (store != null) {
+				store.expire(id);
+			}
+		}
 	}
 
 	protected String sqlUpdate = "";

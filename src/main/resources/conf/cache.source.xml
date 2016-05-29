@@ -59,7 +59,7 @@
 						course_id id,
                         course_no no,
                         course_name name,
-                        teacher_id teacherId,
+                        teacher_no teacherNo,
                         course_size courseSize,
                         course_enrollment courseEnrollment,
                         deadline deadline,
