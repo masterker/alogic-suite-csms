@@ -145,6 +145,7 @@
 						SET 
 						   update_date = now() 
 						   #{not_nvl(size,', course_size='+bind('size'))} 
+						   #{not_nvl(courseNo,', course_no='+bind('courseNo'))} 
 						   #{not_nvl(resGrade,', course_restriction_grade='+bind('resGrade'))} 
 						   #{not_nvl(resMajor,', course_restriction_major='+bind('resMajor'))} 
 						WHERE 
@@ -177,6 +178,7 @@
 						   course 
 						SET 
 						   update_date = now() 
+						   ,course_no = #{bind('courseNo')} 
 						   ,course_status = 'PASSED' 
 						   #{not_nvl(size,', course_size='+bind('size'))} 
 						   #{not_nvl(resGrade,', course_restriction_grade='+bind('resGrade'))} 
