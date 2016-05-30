@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <source>
 	<context>
-		<seq id="default" dbcp="csms" capacity="500"
+		<seq id="default" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
-		<seq id="managerId" dbcp="csms" capacity="100"
+		<seq id="courseId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
-		<seq id="teacherId" dbcp="csms" capacity="100"
+		<seq id="roomId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
-		<seq id="courseId" dbcp="csms" capacity="100"
+		<seq id="courseRoomId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
-		<seq id="roomId" dbcp="csms" capacity="100"
-			module="com.alogic.idu.seq.MySQLSequence">
-		</seq>
-		<seq id="courseRoomId" dbcp="csms" capacity="100"
-			module="com.alogic.idu.seq.MySQLSequence">
-		</seq>
-		<seq id="studentCourseId" dbcp="csms" capacity="100"
+		<seq id="studentCourseId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
 	</context>
