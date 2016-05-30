@@ -16,7 +16,8 @@ http://localhost:9009/services/csms/student/ViewGrade?id=2301
 ```
 
 输出结果：
-```{
+```
+{
     "duration": "1",
     "reason": "It is successful",
     "code": "core.ok",
