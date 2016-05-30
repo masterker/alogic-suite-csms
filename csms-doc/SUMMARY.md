@@ -3,7 +3,22 @@
 * [概述](README.md)
 * [登录(login)]
    * [获取验证码](login/LoginCode.md)
+   * [登录](login/Login.md)
 * [教务员(manager)]
 * [教师(teacher)]
+   * [查看选课学生列表](teacher/StudentList.md)
+   * [录入课程成绩](teacher/RecordCourseGrade.md)
 * [学生(student)]
+   * [教务员查看全部学生列表](student/List.md)
+   * [学生选课](student/SelectCourse.md)
+   * [学生退课](student/DropCourse.md)
+   * [学生评教](student/EvaluateGrade.md)
+   * [学生查看成绩](student/ViewGrade.md)
 * [课程(course)]
+   * [教务员查看全部课程列表](course/List.md)
+   * [教师开设课程](course/New.md)
+   * [更新课程信息](course/Update.md)
+   * [查询指定时间可用教室列表](course/RoomList.md)
+   * [为课程分配教室](course/BindingRoom.md)
+   * [审核课程](course/Pass.md)
+   * [驳回课程](course/Reject.md)
