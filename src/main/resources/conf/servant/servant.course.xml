@@ -39,6 +39,7 @@
 							  	course
 							WHERE 
 								1 = 1
+								#{not_nvl(status,' AND course_status = ' + bind('status'))} 
 								#{not_nvl(teacherNo,' AND teacher_no = ' + bind('teacherNo'))} 
 						" />
 				</properties>
@@ -145,7 +146,6 @@
 						SET 
 						   update_date = now() 
 						   #{not_nvl(size,', course_size='+bind('size'))} 
-						   #{not_nvl(courseNo,', course_no='+bind('courseNo'))} 
 						   #{not_nvl(resGrade,', course_restriction_grade='+bind('resGrade'))} 
 						   #{not_nvl(resMajor,', course_restriction_major='+bind('resMajor'))} 
 						WHERE 
@@ -160,7 +160,7 @@
 				note="审核课程" 
 				visible="protected" 
 				log="brief" 
-				module="com.alogic.idu.service.UpdateById">
+				module="edu.fdu.csms.service.course.Pass">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
