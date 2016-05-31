@@ -6,12 +6,15 @@
    * [登录](login/Login.md)
    * [修改密码](login/ChangePwd.md)
 * [教务员(manager)]
+   * [新增教务员](manager/New.md)
    * [教师查看选课学生列表](manager/ListStudentByCourse.md)
    * [教务员查看学生选课列表](manager/ListCourseByStudent.md)
 * [教师(teacher)]
+   * [新增教师](teacher/New.md)
    * [查看选课学生列表](teacher/StudentList.md)
    * [录入课程成绩](teacher/RecordCourseGrade.md)
 * [学生(student)]
+   * [新增学生](student/New.md)
    * [教务员查看全部学生列表](student/List.md)
    * [学生选课](student/SelectCourse.md)
    * [学生退课](student/DropCourse.md)

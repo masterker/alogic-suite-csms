@@ -40,7 +40,7 @@
 				note="新增学生" 
 				visible="protected"
 				log="none" 
-				module="com.alogic.idu.service.NewById">
+				module="edu.fdu.csms.service.student.New">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
@@ -73,7 +73,7 @@
 		                            #{not_nvl(gender,',' + bind('gender'))} 
 		                            #{not_nvl(grade,',' + bind('grade'))} 
 		                            #{not_nvl(major,',' + bind('major'))} 
-		                            #{not_nvl(password,',' + bind('password'))} 
+		                            #{not_nvl(password,',' + bind('encodePassword'))} 
 		                            ,now() 
 		                            ,now()
 	                            	)
@@ -187,7 +187,7 @@
 		                     FROM 
 		                         student
 		                     WHERE 
-		                         student_id = #{bind('id')}
+		                         student_no = #{bind('id')}
 						" />
 				</properties>
 			</service>

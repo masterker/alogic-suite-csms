@@ -32,10 +32,10 @@
 			<service 
 				id="New" 
 				name="New" 
-				note="新增管理员" 
+				note="新增教务员" 
 				visible="protected"
 				log="none" 
-				module="com.alogic.idu.service.NewById">
+				module="edu.fdu.csms.service.manager.New">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
@@ -43,7 +43,7 @@
 					<parameter id="dbSource" value="csms" />
 					<parameter id="log.on" value="true" />
 					<parameter id="log.type" value="Manager" />
-					<parameter id="log.content" value="新增管理员${id}" />
+					<parameter id="log.content" value="新增教务员${id}" />
 					<parameter id="data.root" value="manager" />
 					<parameter id="privilege" value="manager_csms" />
 					<parameter id="cache.id" value="managers" />
@@ -62,7 +62,7 @@
 	                        		(
 	                        		#{bind('id')} 
 		                            #{not_nvl(name,',' + bind('name'))} 
-		                            #{not_nvl(password,',' + bind('password'))} 
+		                            #{not_nvl(password,',' + bind('encodePassword'))} 
 		                            ,now() 
 		                            ,now()
 	                            	)

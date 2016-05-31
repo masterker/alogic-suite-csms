@@ -35,7 +35,7 @@
 				note="新增教师" 
 				visible="protected"
 				log="none" 
-				module="com.alogic.idu.service.NewById">
+				module="edu.fdu.csms.service.teacher.New">
 				<properties>
 					<parameter id="jsonDefault" value="true" />
 					<parameter id="servant.maxActive" value="10" />
@@ -62,7 +62,7 @@
 	                        		(
 	                        		#{bind('id')} 
 		                            #{not_nvl(name,',' + bind('name'))} 
-		                            #{not_nvl(password,',' + bind('password'))} 
+		                            #{not_nvl(password,',' + bind('encodePassword'))} 
 		                            ,now() 
 		                            ,now()
 	                            	)
