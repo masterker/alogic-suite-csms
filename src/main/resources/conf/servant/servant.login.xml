@@ -85,36 +85,6 @@
 				</properties>
 			</service>
 			
-			<service 
-				id = "CheckPrivilege" 
-				name="CheckPrivilege" 
-				note="检查是否具备指定的权限" 
-				visible="public" 
-				log = "none" 
-				module="edu.fdu.csms.service.login.CheckPrivilege">
-				<properties>
-					<parameter id="servant.maxActive" value="100"/>
-					<parameter id="servant.maxIdle" value="10"/>
-					<parameter id="log.on" value="false"/>
-					<parameter id="cache.id" value="userroles" />
-				</properties>
-			</service>
-			
-			<service 
-				id = "CheckMenu" 
-				name="CheckMenu" 
-				note="检查指定菜单的权限" 
-				visible="public" 
-				log = "none" 
-				module="edu.fdu.csms.service.login.CheckMenu">
-				<properties>
-					<parameter id="servant.maxActive" value="100"/>
-					<parameter id="servant.maxIdle" value="10"/>
-					<parameter id="log.on" value="false"/>
-					<parameter id="cache.id" value="userroles" />
-				</properties>
-			</service>
-			
 		</catalog>						
 	</catalog>
 </catalog>
