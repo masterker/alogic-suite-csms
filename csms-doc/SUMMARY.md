@@ -4,6 +4,7 @@
 * [登录(login)]
    * [获取验证码](login/LoginCode.md)
    * [登录](login/Login.md)
+   * [修改密码](login/ChangePwd.md)
 * [教务员(manager)]
 * [教师(teacher)]
    * [查看选课学生列表](teacher/StudentList.md)

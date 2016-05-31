@@ -56,14 +56,14 @@
 				note="修改登录密码" 
 				visible="protected" 
 				log = "brief" 
-				module="edu.fdu.csms.service.login.ChangePassword">
+				module="edu.fdu.csms.service.login.ChangePwd">
 				<properties>
 					<parameter id="servant.maxActive" value="100"/>
 					<parameter id="servant.maxIdle" value="10"/>
 					<parameter id="dbSource" value="csms"/>
 					<parameter id="log.on" value="true"/>
 					<parameter id="log.type" value="User"/>
-					<parameter id="log.content" value="成功修改密码."/>
+					<parameter id="log.content" value="修改密码."/>
 				</properties>
 			</service>
 			
