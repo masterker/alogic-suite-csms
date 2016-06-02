@@ -85,7 +85,7 @@
 					<parameter id="log.on" value="false" />
 					<parameter id="log.type" value="Manager" />
 					<parameter id="log.content" value="查询教务员${id}个人信息" />
-					<parameter id="data.root" value="manager" />
+					<parameter id="data.root" value="user" />
 					<parameter id="privilege" value="view_csms" />
 					<parameter id="cache.id" value="managers" />
 				</properties>

@@ -122,7 +122,7 @@
 					<parameter id="log.on" value="false" />
 					<parameter id="log.type" value="Student" />
 					<parameter id="log.content" value="查询学生${id}个人信息" />
-					<parameter id="data.root" value="student" />
+					<parameter id="data.root" value="user" />
 					<parameter id="privilege" value="view_csms" />
 					<parameter id="cache.id" value="students" />
 				</properties>
