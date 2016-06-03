@@ -31,7 +31,7 @@ public class ListStudentByCourse extends IDUBase {
 	protected void doIt(Context ctx, JsonMessage msg, Connection conn) throws Exception {
 		String courseId = getArgument("courseId", ctx);
 
-		sqlQuery = "SELECT s.student_no AS studentNo,s.student_name AS studentName,s.student_gender AS studentGender,s.student_grade AS studentGrade,s.student_major AS studentMajor FROM student_course_list sc JOIN student s ON sc.student_no = s.student_no WHERE sc.course_id = "
+		sqlQuery = "SELECT sc.student_course_id AS id,sc.course_grade AS courseGrade,s.student_no AS studentNo,s.student_name AS studentName,s.student_gender AS studentGender,s.student_grade AS studentGrade,s.student_major AS studentMajor FROM student_course_list sc JOIN student s ON sc.student_no = s.student_no WHERE sc.course_id = "
 				+ courseId;
 
 		processor = new Preprocessor(sqlQuery);

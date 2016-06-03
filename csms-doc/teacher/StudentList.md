@@ -16,26 +16,30 @@ http://localhost:9009/services/csms/teacher/StudentList?courseId=701
 输出结果：
 ```
 {
-    "duration": "1",
-    "reason": "It is successful",
-    "code": "core.ok",
+    "duration": "124",
+    "host": "127.0.0.1:9009",
     "student": [
         {
+            "studentName": "Adam Rippion",
+            "id": 1103,
             "studentNo": "2012002002",
-            "studentGrade": "4",
             "studentGender": "M",
+            "courseGrade": 59,
             "studentMajor": "Foreign Language and Literature",
-            "studentName": "Adam Rippion"
+            "studentGrade": "4"
         },
         {
-            "studentNo": "2013001004",
-            "studentGrade": "3",
-            "studentGender": "M",
-            "studentMajor": "Chinese Language and Literature",
-            "studentName": "Joushua Farris"
+            "studentName": "Jessie Chan",
+            "id": 1404,
+            "studentNo": "2014002004",
+            "studentGender": "F",
+            "courseGrade": 0,
+            "studentMajor": "Foreign Language and Literature",
+            "studentGrade": "1"
         }
     ],
-    "serial": "14645218094259eIqqSJ",
-    "host": "0:0:0:0:0:0:0:1:9009"
+    "reason": "It is successful",
+    "code": "core.ok",
+    "serial": "0NW3P0ESBL"
 }
 ```
