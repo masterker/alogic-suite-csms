@@ -16,6 +16,7 @@
 * [学生(student)]
    * [新增学生](student/New.md)
    * [教务员查看全部学生列表](student/List.md)
+   * [学生浏览已审核通过的课程列表](student/BrowseCourse.md)
    * [学生选课](student/SelectCourse.md)
    * [学生退课](student/DropCourse.md)
    * [学生评教](student/EvaluateGrade.md)
