@@ -331,6 +331,23 @@
 					<parameter id="cache.id" value="studentcourses" />
 				</properties>
 			</service>
+			
+			<service 
+				id="BrowseCourse" 
+				name="BrowseCourse" 
+				note="学生浏览已审核通过的课程列表"
+				visible="protected" 
+				log="brief" 
+				module="edu.fdu.csms.service.student.BrowseCourse">
+				<properties>
+					<parameter id="servant.maxActive" value="10" />
+					<parameter id="servant.maxIdle" value="1" />
+					<parameter id="data.root" value="course" />
+					<parameter id="dbSource" value="csms" />
+					<parameter id="log.on" value="false" />
+					<parameter id="privilege" value="view_csms" />
+				</properties>
+			</service>
 		
 		</catalog>
 	</catalog>
