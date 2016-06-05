@@ -7,7 +7,7 @@
    * [修改密码](login/ChangePwd.md)
 * [教务员(manager)]
    * [新增教务员](manager/New.md)
-   * [教师查看选课学生列表](manager/ListStudentByCourse.md)
+   * [教务员查看选课学生列表](manager/ListStudentByCourse.md)
    * [教务员查看学生选课列表](manager/ListCourseByStudent.md)
 * [教师(teacher)]
    * [新增教师](teacher/New.md)
