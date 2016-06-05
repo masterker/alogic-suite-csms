@@ -3,17 +3,15 @@
 ## 输入参数
 | 编号 | 代码 | 类型 | 名称 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | id | String | 学号 | |
-| 2 | name | String | 学生姓名 | |
-| 3 | password | String | 登录密码 | |
-| 4 | gender | String | 性别 | |
-| 5 | grade | String | 年级 | |
-| 6 | major | String | 专业 | |
+| 1 | name | String | 学生姓名 | 必传 |
+| 2 | gender | String | 性别 | |
+| 3 | grade | String | 年级 | |
+| 4 | major | String | 专业 | |
 
 #样例
 下面是一个成功新增学生的样例：
 ```url
-http://localhost:9009/services/csms/student/New?id=2016000000&name=studentNew&password=000000
+http://localhost:9009/services/csms/student/New?name=studentNew
 ```
 
 输出结果：

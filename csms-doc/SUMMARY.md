@@ -15,6 +15,8 @@
    * [录入课程成绩](teacher/RecordCourseGrade.md)
 * [学生(student)]
    * [新增学生](student/New.md)
+   * [修改学生信息](student/Update.md)
+   * [删除学生](student/Delete.md)
    * [教务员查看全部学生列表](student/List.md)
    * [学生浏览已审核通过的课程列表](student/BrowseCourse.md)
    * [学生选课](student/SelectCourse.md)
