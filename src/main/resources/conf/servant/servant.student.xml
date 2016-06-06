@@ -73,7 +73,7 @@
 		                            #{not_nvl(gender,',' + bind('gender'))} 
 		                            #{not_nvl(grade,',' + bind('grade'))} 
 		                            #{not_nvl(major,',' + bind('major'))} 
-		                            #{not_nvl(password,',' + bind('encodePassword'))} 
+		                            #{not_nvl(password,',' + bind('password'))} 
 		                            ,now() 
 		                            ,now()
 	                            	)

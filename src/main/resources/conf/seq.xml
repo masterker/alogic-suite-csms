@@ -7,6 +7,9 @@
 		<seq id="courseId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>
+		<seq id="studentId" dbcp="csms" capacity="1"
+			module="com.alogic.idu.seq.MySQLSequence">
+		</seq>
 		<seq id="roomId" dbcp="csms" capacity="1"
 			module="com.alogic.idu.seq.MySQLSequence">
 		</seq>

@@ -9,6 +9,7 @@ import java.util.Map;
 import com.alogic.cache.core.CacheStore;
 import com.alogic.cache.core.MultiFieldObject;
 import com.alogic.idu.util.IDUBase;
+import com.alogic.sequence.client.SeqTool;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 import com.anysoft.util.code.Coder;
@@ -44,13 +45,20 @@ public class New extends IDUBase {
 	@Override
 	protected void doIt(Context ctx, JsonMessage msg, Connection conn) throws Exception {
 		String userId = getArgument("user.id", "", ctx);
-		String id = getArgument("id", ctx);
+		// String id = getArgument("id", ctx);
 
-		String password = getArgument("password", ctx);
-		if (password != null && password.length() > 0) {
-			String encodePassword = encodePassword(password, id);
-			ctx.SetValue("encodePassword", encodePassword);
-		}
+		long seqId = SeqTool.nextLong("studentId");
+		String id = Long.toString(seqId);
+		ctx.SetValue("id", id);
+
+		// String password = getArgument("password", ctx);
+		// if (password != null && password.length() > 0) {
+		// String encodePassword = encodePassword(password, id);
+		// ctx.SetValue("encodePassword", encodePassword);
+		// }
+
+		String encodePassword = encodePassword("123456", id);
+		ctx.SetValue("password", encodePassword);
 
 		String dataGuardObject = getArgument(dataId, id, ctx);
 		if (!checkPrivilege(userId, dataGuardObject)) {
