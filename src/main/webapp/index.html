@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+        <title>选课系统</title>
+        
+
+        <link rel="stylesheet" href="./js/libs/jquery-ui/css/jquery-ui.css">
+        <link rel="stylesheet" href="./js/libs/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="./js/libs/tokenfield/css/bootstrap-tokenfield.css">
+        <link rel="stylesheet" href="./js/libs/tokenfield/css/tokenfield-typeahead.css">
+        <link rel="stylesheet" href="./js/libs/bootstrap-table/bootstrap-table.css">
+        <link rel="stylesheet" href="./js/libs/bootstrap-table/bootstrap-editable.css">
+        <link rel="stylesheet" href="./css/xk.css">
+    
+        <script data-main="./js/main" src="./js/libs/require.js"></script>
+
+    </head>
+    <body>
+
+        
+    </body>
+    <!-- 模板 -->
+    
+    <!-- app view -->
+    <script type="text/template" id="appview-template">
+        <div class="login-container" style="display: none;"></div>
+        <div class="changepwd-container" style="display: none;"></div>
+        <div class="app-container" style="display: none;">
+            <div class="app-header">
+                <div class="user-header">
+                    <strong>角色：</strong><span class="user-role"></span>
+                    <strong>用户名：</strong><span class="user-name"></span>
+                </div>
+                <div class="btn btn-default change-pwd">
+                    修改密码
+                </div>
+                <div class="btn logout-btn btn-warning">登出</div>
+            </div>
+            <div class="containers" role="teacher">
+            </div>
+            <div class="containers" role="student">
+            </div>
+            <div class="containers" role="manager">
+            </div>
+        </div>
+        <div class="body-loading-box">
+            <div class="body-loading">
+                加载中...
+            </div>
+        </div>
+    </script>
+
+    <!-- 登录 -->
+    <script type="text/template" id="login-template">
+        <div>
+            <h1 class="title">CSMS</h1>
+            <form>
+                <div class="form-group user-role">
+                    <label for="role">角色</label>
+                    <select class="form-control" name="role">
+                        <option value="teacher">教师</option>
+                        <option value="student">学生</option>
+                        <option value="manager">教务员</option>
+                    </select>
+                </div>
+                <div class="form-group user-id">
+                    <label for="username">工号</label>
+                    <input type="text" class="form-control"  />
+                </div>
+                <div class="form-group user-password">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password"  />
+                </div>
+                <div class="form-group login-captcha">
+                    <label for="captcha" style="display:block;">验证码</label>
+                    <input class="form-control" style="display:inline-block;width:130px;" />
+                    <img class="login-code" src="/services/csms/login/LoginCode" alt="验证码" width="80px;" height="26px;">
+                </div>
+                <button type="submit" class="btn btn-primary login-btn">登录</button>
+            </form>
+        </div>
+    </script>
+
+    <!-- 修改密码 -->
+    <script type="text/template" id="changepwd-template">
+        <div>
+            <form>
+                <div class="form-group old-password">
+                    <label for="password">原密码</label>
+                    <input type="password" class="form-control" required />
+                </div>
+                <div class="form-group new-password">
+                    <label for="password">新密码</label>
+                    <input type="password" class="form-control" required />
+                </div>
+                <div class="form-group confirm-new-password">
+                    <label for="password">确认新密码</label>
+                    <input type="password" class="form-control" required />
+                </div>
+                <div class="form-group login-captcha">
+                    <label for="captcha" style="display:block;">验证码</label>
+                    <input class="form-control" style="display:inline-block;width:130px;" required />
+                    <img class="login-code" src="/services/csms/login/LoginCode" alt="验证码" width="80px;" height="26px;">
+                </div>
+                <button type="submit" class="btn btn-primary changepwd-btn">修改密码</button>
+                <button class="btn btn-primary cancel-btn">取消</button>
+            </form>
+        </div>
+    </script>
+
+    <!-- teacher -->
+    <script type="text/template" id="teacher-template">
+        <div class="teacher-page">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <!-- <li role="presentation">
+                        <a href="#teacher_profile" aria-controls="teacher_profile" role="tab" data-toggle="tab" act="profile">个人信息</a>
+                    </li> -->
+                    <li role="presentation">
+                        <a href="#teacherpendingcourses" aria-controls="teacherpendingcourses" role="tab" data-toggle="tab" act="teacherpendingcourses">待审核课程</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#teacherpassedcourses" aria-controls="teacherpassedcourses" role="tab" data-toggle="tab" act="teacherpassedcourses">已审核课程</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- <div role="tabpanel" class="tab-pane" id="teacher_profile">
+                        <div class="profile-container">
+                            <form>
+                                <div class="form-group user-name">
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control"  />
+                                </div>
+
+                                <div class="form-group user-gender">
+                                    <label for="gender">性别</label>
+                                    <select class="form-control" name="gender">
+                                        <option value="m">男</option>
+                                        <option value="f">女</option>
+                                    </select>
+                                </div>
+                                <div class="form-group change-pwd" style="cursor: pointer;color: #428bca;">
+                                    修改密码
+                                </div>
+                            </form>
+                        </div>
+                    </div> -->
+                    <div role="tabpanel" class="tab-pane" id="teacherpendingcourses">
+                        <div class="toolbar">
+                            <button class="add-course btn btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> 新建课程
+                            </button>
+                        </div>
+                        <div class="modal fade new-course-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">新建课程</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group course-name">
+                                                    <label for="name">课程名称</label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="form-group course-size">
+                                                    <label for="size">选课人数上限</label>
+                                                    <input type="number" class="form-control" />
+                                                </div>
+                                                <div class="form-group course-credit">
+                                                    <label for="credit">学分</label>
+                                                    <input type="number" class="form-control" />
+                                                </div>
+                                                <div class="form-group course-period">
+                                                    <label for="period">学时</label>
+                                                    <input type="number" class="form-control" />
+                                                </div>
+                                                <div class="form-group course-time">
+                                                    <label for="period">上课时间</label>
+                                                    <button class="btn btn-xs btn-primary add-apply-time">
+                                                        <i class="glyphicon glyphicon-plus"></i>增加时间
+                                                    </button>
+                                                    <div class="course-time-picker-template course-time" style="display:none;">
+                                                        <div class="weekday time-part">
+                                                            <label for="weekday">星期</label>
+                                                            <select class="form-control" name="weekday">
+                                                                <option value="A">一</option>
+                                                                <option value="B">二</option>
+                                                                <option value="C">三</option>
+                                                                <option value="D">四</option>
+                                                                <option value="E">五</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="section time-part">
+                                                            <label for="section">节次</label>
+                                                            <select class="form-control" name="section">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="remove-course-time time-part">
+                                                            <button class="btn btn-xs btn-primary">
+                                                                <i class="glyphicon glyphicon-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="course-time-list">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group course-restriction-grade">
+                                                    <label for="restriction-grade">年级限制</label>
+                                                    <input type="text" class="form-control restriction-grade tokenfield-input" value="" />
+                                                </div>
+                                                <div class="form-group course-restriction-major">
+                                                    <label for="restriction-major">专业限制</label>
+                                                    <input type="text" class="form-control restriction-major tokenfield-input" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary confirm-new-course">申请</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="teacher-pending-courses-table" data-search="true" data-pagination="true"></table>
+                        
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="teacherpassedcourses">
+                        <table class="teacher-passed-courses-table" data-search="true" data-pagination="true"></table>
+
+                        <div class="modal fade course-students-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title course-name"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="course-students-table" data-search="true" data-pagination="true"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- student -->
+    <script type="text/template" id="student-template">
+        <div class="student-page">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <!-- <li role="presentation">
+                        <a href="#student_profile" aria-controls="student_profile" role="tab" data-toggle="tab" act="profile">个人信息</a>
+                    </li> -->
+
+                    <li role="presentation">
+                        <a href="#studentchoosedcourses" aria-controls="studentchoosedcourses" role="tab" data-toggle="tab" act="studentchoosedcourses">已选课程列表</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#studentunchoosedcourses" aria-controls="studentunchoosedcourses" role="tab" data-toggle="tab" act="studentunchoosedcourses">未选课程列表</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab" act="schedule">课程表</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- <div role="tabpanel" class="tab-pane" id="student_profile">
+                        <div class="profile-container">
+                            <form>
+                                <div class="form-group user-name">
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control"  />
+                                </div>
+
+                                <div class="form-group user-gender">
+                                    <label for="gender">性别</label>
+                                    <select class="form-control" name="gender">
+                                        <option value="m">男</option>
+                                        <option value="f">女</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group user-grade">
+                                    <label for="grade">年级</label>
+                                    <select class="form-control" name="grade">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group change-pwd" style="cursor: pointer;color: #428bca;">
+                                    修改密码
+                                </div>
+                            </form>
+                        </div>
+                    </div> -->
+                    <div role="tabpanel" class="tab-pane" id="studentchoosedcourses">
+                        <table class="student-choosed-courses-table" data-search="true" data-pagination="true"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="studentunchoosedcourses">
+                        <table class="student-unchoosed-courses-table" data-search="true" data-pagination="true"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="schedule">
+                        <table class="stucourse-schedule"></table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+
+    <!-- manager -->
+    <script type="text/template" id="manager-template">
+        <div class="manager-page">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation">
+                        <a href="#commitcourse" aria-controls="commitcourse" role="tab" data-toggle="tab" act="commitcourse">审批课程</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#getallcourse" aria-controls="getallcourse" role="tab" data-toggle="tab" act="getallcourse">查看所有课程</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#getallstudents" aria-controls="getallstudents" role="tab" data-toggle="tab" act="getallstudents">查看所有学生</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="commitcourse">
+                        <table class="course-pass-table" data-search="true" data-pagination="true"></table>
+                        <div class="modal fade assign-room-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <h4 class="modal-title course-name"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="room-assign-table"></table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary confirm-room-assign">确认</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="getallcourse">
+                        <table class="course-all-table" data-search="true" data-pagination="true"></table>
+                        <div class="modal fade course-all-students-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title course-name"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="course-all-students-table" data-search="true" data-pagination="true"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="getallstudents">
+                        <div class="toolbar">
+                            <button class="add-student-row btn btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> 新增学生
+                            </button>
+                        </div>
+                        <div class="modal fade new-student-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">新建学生账号</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="new-student-form">
+                                            <div class="form-group user-name">
+                                                <label for="name">姓名</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <div class="form-group user-gender">
+                                                <label for="gender">性别</label>
+                                                <select class="form-control">
+                                                    <option value="M">男</option>
+                                                    <option value="F">女</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group user-grade">
+                                                <label for="grade">年级</label>
+                                                <select class="form-control">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group user-major">
+                                                <label for="major">专业</label>
+                                                <select class="form-control">
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary confirm-new-student">确认</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="student-all-table" data-search="true" data-pagination="true"></table>
+                        <div class="modal fade student-all-course-modal" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title student-name"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="student-courses-table" data-search="true" data-pagination="true"></table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+</html>
+
+

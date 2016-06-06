@@ -1,0 +1,149 @@
+/* global */
+html, body{
+	width: 100%;
+	height: 100%;
+}
+h1.title{
+	text-align: center;
+	margin: 0 0 40px 0;
+}
+.toolbar {
+	float: left;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.new-student-form{
+	width: 250px;
+	margin: 0 auto;
+}
+.body-loading-box{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0, .8);
+	z-index: 100000;
+	display: none;
+}
+.body-loading{
+	height: 100px;
+	width: 200px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+	color: #fff;
+	font-family: 微软雅黑;
+}
+.body-loading .circle{
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #fff;
+}
+.app-header {
+	overflow: hidden;
+	margin: 0px 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+.app-header .logout-btn{
+	float: right;
+}
+.app-header .change-pwd{
+	float: right;
+	margin-left: 10px;
+}
+.user-header{
+	float: left;
+}
+.user-header > span{
+	margin-right: 20px;
+}
+.containers {
+	padding: 20px;
+}
+
+.profile-container {
+	width: 300px;
+}
+
+.tab-content > .tab-pane {
+	padding: 20px;
+}
+table button.btn {
+    padding: 3px 12px;
+}
+
+/* login page */
+.login-container, .changepwd-container {
+	height: 450px;
+	width: 220px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.login-container .login-btn {
+	width: 100%;
+}
+
+/* teacher */
+.course-time-picker {
+	overflow: hidden;
+}
+.course-time-picker > div{
+	float: left;
+	overflow: hidden;
+}
+.course-time-picker > div > label{
+	float: left;
+	margin: 6px;
+}
+.course-time-picker > div > .form-control {
+	width: auto;
+	margin-right: 15px;
+}
+
+.course-time-list {
+	overflow: hidden;
+	margin-top: 10px;
+}
+.course-time-list .course-time{
+	overflow: hidden;
+	margin-top: 5px;
+}
+.course-time {
+	
+}
+.course-time select{
+	display: inline-block;
+	width: 70px;
+	margin-right: 15px;
+}
+.course-time .time-part{
+	float: left;
+}
+.remove-course-time{
+	margin-top: 6px;
+}
+
+.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
+	z-index: 999999999999999;
+}
+
+.schedule-detail {
+	text-align: center;
+}
+
+.stucourse-schedule th{
+	width: 100px;
+}
