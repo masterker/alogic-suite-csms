@@ -335,7 +335,7 @@
 			<service 
 				id="BrowseCourse" 
 				name="BrowseCourse" 
-				note="学生浏览已审核通过的课程列表"
+				note="学生浏览已审核通过的未选课程列表"
 				visible="protected" 
 				log="brief" 
 				module="edu.fdu.csms.service.student.BrowseCourse">

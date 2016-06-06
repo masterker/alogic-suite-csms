@@ -1,10 +1,10 @@
-# 学生浏览已审核通过的课程列表
+# 学生浏览已审核通过的未选课程列表
 
 ## 样例
 
-下面是一个成功浏览已审核通过的课程列表的样例：
+下面是一个成功浏览已审核通过的未选课程列表的样例：
 ```url
-http://localhost:9009/services/csms/student/BrowseCourse
+http://localhost:9009/services/csms/student/BrowseCourse?studentNo=2012002002
 ```
 
 输出结果：

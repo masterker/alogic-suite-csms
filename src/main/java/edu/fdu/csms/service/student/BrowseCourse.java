@@ -15,7 +15,7 @@ import com.logicbus.dbcp.sql.DBTools;
 import com.logicbus.models.servant.ServiceDescription;
 
 /**
- * 学生浏览已审核通过的课程列表
+ * 学生浏览已审核通过的未选课程列表
  * 
  * @author limf
  */
@@ -28,6 +28,12 @@ public class BrowseCourse extends IDUBase {
 
 	@Override
 	protected void doIt(Context ctx, JsonMessage msg, Connection conn) throws Exception {
+
+		// String studentNo = ctx.GetValue("studentNo", "");
+		String studentNo = getArgument("studentNo", ctx);
+
+		sqlCourseQuery = "SELECT c.course_id AS id,c.course_no AS courseNo,c.course_name AS courseName,t.teacher_name AS teacherName,c.course_size AS courseSize,c.course_enrollment AS courseEnrollment,c.course_restriction_grade AS courseRestrictionGrade,course_restriction_major AS courseRestrictionMajor,c.course_credits AS courseCredits,c.course_period AS coursePeriod FROM course c JOIN teacher t ON c.teacher_no=t.teacher_no WHERE c.course_status='PASSED' AND c.course_id NOT IN(SELECT course_id FROM student_course_list WHERE student_no="
+				+ studentNo + ")";
 
 		List<Map<String, Object>> courseResult = DBTools.listAsObject(conn, sqlCourseQuery);
 		List<Map<String, Object>> finalCourseResult = new ArrayList<Map<String, Object>>();
@@ -56,10 +62,26 @@ public class BrowseCourse extends IDUBase {
 		msg.getRoot().put(rootName, finalCourseResult);
 	}
 
-	protected String rootName = "data";
-
-	protected String sqlCourseQuery = "SELECT c.course_id AS id,c.course_no AS courseNo,c.course_name AS courseName,t.teacher_name AS teacherName,c.course_size AS courseSize,c.course_enrollment AS courseEnrollment,c.course_restriction_grade AS courseRestrictionGrade,course_restriction_major AS courseRestrictionMajor,c.course_credits AS courseCredits,c.course_period AS coursePeriod FROM course c JOIN teacher t ON c.teacher_no=t.teacher_no WHERE c.course_status='PASSED'";
-
 	protected String sqlRoomQuery = "";
 
+	protected String rootName = "data";
+
+	protected String sqlCourseQuery = "";
+	// protected String sqlCourseQuery = "SELECT c.course_id AS id,c.course_no
+	// AS courseNo,c.course_name AS courseName,t.teacher_name AS
+	// teacherName,c.course_size AS courseSize,c.course_enrollment AS
+	// courseEnrollment,c.course_restriction_grade AS
+	// courseRestrictionGrade,course_restriction_major AS
+	// courseRestrictionMajor,c.course_credits AS courseCredits,c.course_period
+	// AS coursePeriod FROM course c JOIN teacher t ON c.teacher_no=t.teacher_no
+	// WHERE c.course_status='PASSED'";
+	// protected String sqlCourseQuery = "SELECT c.course_id AS id,c.course_no
+	// AS courseNo,c.course_name AS courseName,t.teacher_name AS
+	// teacherName,c.course_size AS courseSize,c.course_enrollment AS
+	// courseEnrollment,c.course_restriction_grade AS
+	// courseRestrictionGrade,course_restriction_major AS
+	// courseRestrictionMajor,c.course_credits AS courseCredits,c.course_period
+	// AS coursePeriod FROM course c JOIN teacher t ON c.teacher_no=t.teacher_no
+	// WHERE c.course_status='PASSED' AND c.course_id NOT IN(SELECT course_id
+	// FROM student_course_list WHERE student_no=2012002002)";
 }
