@@ -41,13 +41,19 @@ public class ListCourse extends IDUBase {
 		// cr ON c.course_id = cr.course_id WHERE sc.student_no = "
 		// + studentNo;
 
-		sqlCourseQuery = "SELECT sc.student_course_id AS studentCourseId,c.course_id as courseId,c.course_no as courseNo,c.course_name as courseName,t.teacher_name as teacherName,c.course_credits as courseCredits,c.course_period as coursePeriod FROM student_course_list sc JOIN course c ON sc.course_id = c.course_id JOIN teacher t ON c.teacher_no = t.teacher_no WHERE sc.student_no ="
+		sqlCourseQuery = "SELECT sc.student_course_id AS studentCourseId,sc.course_grade AS courseGrade,sc.evaluation_grade AS evaluationGrade,c.course_id as courseId,c.course_no as courseNo,c.course_name as courseName,t.teacher_name as teacherName,c.course_credits as courseCredits,c.course_period as coursePeriod FROM student_course_list sc JOIN course c ON sc.course_id = c.course_id JOIN teacher t ON c.teacher_no = t.teacher_no WHERE sc.student_no ="
 				+ studentNo;
 
 		List<Map<String, Object>> courseResult = DBTools.listAsObject(conn, sqlCourseQuery);
 		List<Map<String, Object>> finalCourseResult = new ArrayList<Map<String, Object>>();
 
 		for (Map<String, Object> course : courseResult) {
+
+			int evaluationGrade = Integer.parseInt(course.get("evaluationGrade").toString());
+			if (evaluationGrade == -1) {
+				course.put("courseGrade", -2);
+			}
+
 			String courseId = course.get("courseId").toString();
 			sqlRoomQuery = "SELECT cr.room_time AS roomTime,r.campus AS campus,r.building AS building,r.room_no AS roomNo FROM course_room_list cr JOIN classroom r ON cr.room_id=r.room_id WHERE cr.course_id="
 					+ courseId;

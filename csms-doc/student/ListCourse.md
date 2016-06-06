@@ -12,6 +12,7 @@ http://localhost:9009/services/csms/student/ListCourse?studentNo=2012002002
 {
     "course": [
         {
+            "courseGrade": 59,
             "coursePeriod": 64,
             "roomDetails": [
                 {
@@ -45,12 +46,14 @@ http://localhost:9009/services/csms/student/ListCourse?studentNo=2012002002
             ],
             "courseNo": "haha",
             "courseCredits": 3,
-            "studentCourseId": 1103,
+            "evaluationGrade": 88,
             "courseId": 401,
+            "studentCourseId": 1103,
             "teacherName": "Lori Nichol",
             "courseName": "语言文化"
         },
         {
+            "courseGrade": -2,
             "coursePeriod": 64,
             "roomDetails": [
                 {
@@ -70,16 +73,17 @@ http://localhost:9009/services/csms/student/ListCourse?studentNo=2012002002
             ],
             "courseNo": "",
             "courseCredits": 3,
-            "studentCourseId": 1305,
+            "evaluationGrade": -1,
             "courseId": 1301,
+            "studentCourseId": 1305,
             "teacherName": "Jeffery Buttle",
             "courseName": "时间冲突测试"
         }
     ],
-    "duration": "35",
+    "duration": "11",
     "host": "0:0:0:0:0:0:0:1:9009",
     "reason": "It is successful",
     "code": "core.ok",
-    "serial": "87JCCK32FH"
+    "serial": "VQLUPKSI59"
 }
 ```
