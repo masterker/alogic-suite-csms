@@ -232,7 +232,19 @@ define(function(require, exports, module) {
                 data.courseDetail = '';
                 tableOptions.data.push(data);
             }
-
+            tableOptions.onEditableShown = function (field, row, $ele, reason) {
+                switch(field){
+                    case 'courseRestrictionGrade':
+                        self._initGradeToken(reason.input.$input, row[field]);
+                        break;
+                    case 'courseRestrictionMajor':
+                        self._initMajorToken(reason.input.$input, row[field]);
+                        break;
+                    default:
+                        ;
+                }
+            }
+            
             this.coursePassTable = $table.bootstrapTable(tableOptions);
         },
 
@@ -341,6 +353,44 @@ define(function(require, exports, module) {
             }
 
             this.roomAssignTable = $table.bootstrapTable(tableOptions);
+        },
+
+        _initGradeToken: function ($input, value) {
+            $input.tokenfield({
+              autocomplete: {
+                source: enums.grade_string,
+                delay: 100
+              },
+              showAutocompleteOnFocus: true,
+              minWidth: '200'
+            });
+            $input.on('tokenfield:createtoken', function (event) {
+                var existingTokens = $(this).tokenfield('getTokens');
+                $.each(existingTokens, function(index, token) {
+                    if (token.value === event.attrs.value)
+                        event.preventDefault();
+                });
+            });
+            $input.tokenfield('setTokens', value);
+        },
+
+        _initMajorToken: function ($input, value) {
+            $input.tokenfield({
+              autocomplete: {
+                source: enums.major,
+                delay: 100
+              },
+              showAutocompleteOnFocus: true,
+              minWidth: '200'
+            });
+            $input.on('tokenfield:createtoken', function (event) {
+                var existingTokens = $(this).tokenfield('getTokens');
+                $.each(existingTokens, function(index, token) {
+                    if (token.value === event.attrs.value)
+                        event.preventDefault();
+                });
+            });
+            $input.tokenfield('setTokens', value);
         },
 
         _displayRooms: function (rooms) {

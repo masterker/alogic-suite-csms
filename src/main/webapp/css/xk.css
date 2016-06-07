@@ -147,3 +147,7 @@ table button.btn {
 .stucourse-schedule th{
 	width: 100px;
 }
+
+.editable-input .tokenfield{
+	min-width: 250px;
+}
