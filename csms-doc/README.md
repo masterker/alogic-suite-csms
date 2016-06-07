@@ -55,16 +55,16 @@ fdu-csms为复旦大学数据库课程大作业--高校选课管理系统。
 	
 - 后台代码
 	+ default package
-		App.java，引导类，配合settings.xml将配置文件转化为java文件可访问的位置；
+		* App.java，引导类，配合settings.xml将配置文件转化为java文件可访问的位置；
 	+ ac package
-		SessionAccessController，基于登录会话的访问控制器，用于控制客户端对服务器访问的权限以及最大并发数；
+		* SessionAccessController，基于登录会话的访问控制器，用于控制客户端对服务器访问的权限以及最大并发数；
 	+ service package
-		后台业务的核心逻辑控制以及复杂数据库操作并转化为系统缓存；
+		* 后台业务的核心逻辑控制以及复杂数据库操作并转化为系统缓存；
 	+ session package
-		CachedSessionManager，基于缓存的会话管理器，用于存放登录用户信息，对用户进行服务访问权限判断；
+		* CachedSessionManager，基于缓存的会话管理器，用于存放登录用户信息，对用户进行服务访问权限判断；
 	+ util package 工具包
-		BatchAddCourseRoom，将教室和课程节次排列组合成为可用单元存入数据库；
-		TransformPwd，将静态表中的用户密码进行批量MD5加密。
+		* BatchAddCourseRoom，将教室和课程节次排列组合成为可用单元存入数据库；
+		* TransformPwd，将静态表中的用户密码进行批量MD5加密。
 		
 - 前端页面
 	+ assembly-make-alogic.xml和WEB-INF
