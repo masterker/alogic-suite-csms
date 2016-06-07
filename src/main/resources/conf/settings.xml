@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
+
     <!-- 服务目录配置 -->
     <parameter id="servant.config.master" value="java:///conf/servant.catalog.xml#App" />
-	
-	<!--  缓存配置
-		如需要调试，修改本地local.xml，增加: 
-		<parameter id="cache.master" value="java:///conf/cache.source.xml#App" final="true" />
-	 -->
-	
-	<!-- redis缓存配置 -->
-	<!-- <parameter id="cache.master" value="java:///conf/cache.redis.source.xml#App" final="true"/> -->
-	
-	<!-- <parameter id="kvalue.master" value="java:///conf/redis/kvalue.xml#App"/> -->
 	
     <!-- dbcp配置 -->
     <parameter id="dbcp.master" value="java:///conf/dbcp.source.xml#App"/>
@@ -19,43 +10,8 @@
     <!-- sequeuece配置 -->
     <parameter id="seq.master" value="java:///conf/seq.xml#App"/>
     
-    <!-- 
-    	timer分布式锁
-    	如需要调试，修改本地local.xml，增加:
-    	<parameter id="timer.lock" value="com.ketty.util.LocalLock"/> 
-    -->
-    <!-- <parameter id="timer.lock" value="com.ketty.core.zookeeper.GlobalLock" final="true"/> -->
-	
-	<!--  lucene配置    -->
-    <!-- <parameter id="indexer.master" value="java:///conf/indexer.xml#App"/> -->
-	
-    <!-- web context扩展配置 -->
-    <parameter id="webcontext.addons" value="java:///conf/web.addons.xml#App"/>	
-	
-    <!-- blob配置 -->
-    <!-- <parameter id="blob.master" value="java:///conf/blob.source.xml#App"/> -->
-    
-    <!-- <parameter id="vfs.master" value="java:///conf/vfs.xml#App"/> -->
-	
-    <!-- 重定向/blob/*所对应的服务 -->
-    <!-- <parameter id="normalizer.blob.id" value="/util/Download"/> -->
-    
-	<!-- 
-		itportal服务地址配置 
-		  如需要调试，修改本地local.xml，增加:
-		<parameter id="server.itportal" value="10.142.90.58:9092" final="true"/>
-	 -->
-    
-    <!-- 下面是访问控制器配置 -->
-    <!-- begin -->
+    <!-- Access Controller配置 -->
     <parameter id="acm.master" value="java:///conf/acm.xml#App"/>
-	<!-- end -->
-    <!-- <parameter 
-        id="guard.on" value="true" note="是否开启服务权限控制"/>		
-    <parameter 
-        id="guard.module" value="com.alogic.csms.ac.ServiceGuard" note="服务权限控制类名"/> -->
-    <parameter 
-        id="session.manager" value="edu.fdu.csms.session.CachedSessionManager" note="会话管理器"/>
-    <!--  end -->
+    <parameter id="session.manager" value="edu.fdu.csms.session.CachedSessionManager" note="会话管理器"/>
+    
 </settings>
-
