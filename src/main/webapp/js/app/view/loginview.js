@@ -53,6 +53,7 @@ define(function(require, exports, module) {
         },
 
         _login: function (e) {
+            var self = this;
             e.preventDefault();
             var role = this.$('.user-role select').val(),
                 loginId = this.$('.user-id input').val(),
@@ -81,7 +82,9 @@ define(function(require, exports, module) {
 
                     appRouter.goto(data.role);
                 });
-                
+            }, function () {
+                var $e = self.$('.login-code');
+                $e.attr('src', $e.attr('src') + '?' + Math.random());
             });
         }
     });

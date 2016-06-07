@@ -42,6 +42,7 @@ define(function(require, exports, module) {
         },
 
         _changepwd: function(e) {
+            var self = this;
             e.preventDefault();
             var $e = $(e.currentTarget);
             var oldPwd = this.$('.old-password input').val(),
@@ -72,6 +73,9 @@ define(function(require, exports, module) {
             api.changepwd(data).then(function() {
                 alert('密码修改成功');
                 appRouter.goto(xk.role);
+            }, function () {
+                var $e = self.$('.login-code');
+                $e.attr('src', $e.attr('src') + '?' + Math.random());
             });
         },
 

@@ -35,6 +35,23 @@ define(function(require, exports, module) {
                 res += self.parseTime(time) + (index == times.length-1 ? '' : '，');
             });
             return res;
+        },
+
+        parseTimeRoom: function (timeRoom) {
+            var reg = /^([^\@]*)\@(.*)$/;
+            var res = timeRoom.match(reg);
+            var time = res[1], room = res[2];
+
+            return this.parseTime(time) + '-' + room;
+        },
+
+        parseTimeRoomsToHtml: function (timeRooms) {
+            var html = [], self = this;
+            _.each(timeRooms, function(timeRoom){
+                html.push(self.parseTimeRoom(timeRoom));
+            });
+
+            return html.join('<br/><br/>');
         }
     }
 

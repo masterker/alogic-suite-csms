@@ -7,11 +7,5 @@ define(function(require, exports, module) {
         id: '',
     };
 
-    // var xk = {
-    //     isLogin: true,
-    //     role: 'student',
-    //     name: '费曼先生'
-    // };
-
     return xk;
 });

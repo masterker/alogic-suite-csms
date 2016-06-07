@@ -4,6 +4,7 @@ define(function(require, exports, module) {
         Backbone = require('backbone');
     
     var xk = require('biz/xk');
+    var util = require('util');
     var enums = require('biz/enums');
     var tokenfield = require('tokenfield');
     var bstable = require('bs-table-zh');
@@ -158,6 +159,12 @@ define(function(require, exports, module) {
                 },  {
                     field: 'coursePeriod',
                     title: '学时'
+                },  {
+                    field: 'courseTimeRoom',
+                    title: '上课时间&地点',
+                    formatter: function (value) {
+                        return util.parseTimeRoomsToHtml(value);
+                    }
                 }, {
                     field: 'courseRestrictionGrade',
                     title: '年级限制'
@@ -196,6 +203,7 @@ define(function(require, exports, module) {
                     data[column.field] = courses[i][column.field];
                 });
                 data.courseId = courses[i]['id'];
+                data.courseTimeRoom = _.pluck(courses[i]['roomDetails'], 'roomDetail');
                 tableOptions.data.push(data);
             }
 
@@ -232,15 +240,13 @@ define(function(require, exports, module) {
                 },  {
                     field: 'coursePeriod',
                     title: '学时'
-                }, 
-                // {
-                //     field: 'courseRestrictionGrade',
-                //     title: '年级限制'
-                // }, {
-                //     field: 'courseRestrictionMajor',
-                //     title: '专业限制'
-                // }, 
-                {
+                },  {
+                    field: 'courseTimeRoom',
+                    title: '上课时间&地点',
+                    formatter: function (value) {
+                        return util.parseTimeRoomsToHtml(value);
+                    }
+                }, {
                     field: 'evaluationGrade',
                     title: '评教结果',
                     formatter: function(value, row, index) {
@@ -315,6 +321,7 @@ define(function(require, exports, module) {
                     data[column.field] = courses[i][column.field];
                 });
                 data.courseId = courses[i]['courseId'];
+                data.courseTimeRoom = _.pluck(courses[i]['roomDetails'], 'roomDetail');
                 data.studentCourseId = courses[i]['studentCourseId'];
                 tableOptions.data.push(data);
             }
@@ -358,9 +365,9 @@ define(function(require, exports, module) {
             function scheduleFormatter (value, row, index) {
                 if (value) {
                     var html = [];
-                    html.push('<div class="course-name schedule-detail">' + row.course_name + '</div>');
+                    html.push('<div class="course-name schedule-detail">' + value.course_name + '</div>');
                     html.push('<br/>');
-                    html.push('<div class="course-room schedule-detail">' + row.course_room + '</div>');
+                    html.push('<div class="course-room schedule-detail">' + value.course_roomDetail + '</div>');
                     return html.join('');
                 } else {
                     return '<div class="course-room schedule-detail">-</div>';
@@ -418,7 +425,8 @@ define(function(require, exports, module) {
                         course_time: time,
                         course_wd: wd,
                         course_section: section,
-                        course_room: roomDetail.building
+                        // course_room: roomDetail.building,
+                        course_roomDetail: roomDetail.roomDetail.replace(/[^@]*@/, '')
                     });
                 }
             }
@@ -441,9 +449,13 @@ define(function(require, exports, module) {
                 };
                 for (var j = 0; j < groupedCourse.length; j++) {
                     var wd = groupedCourse[j]['course_wd'];
-                    row['wd' + (wds.indexOf(wd) + 1)] = groupedCourse[j]['course_name'];
-                    row.course_name = groupedCourse[j]['course_name'];
-                    row.course_room = groupedCourse[j]['course_room']
+                    // row['wd' + (wds.indexOf(wd) + 1)] = groupedCourse[j]['course_name'];
+                    row['wd' + (wds.indexOf(wd) + 1)] = {
+                        course_name: groupedCourse[j]['course_name'],
+                        course_roomDetail: groupedCourse[j]['course_roomDetail']
+                    };
+                    // row.course_name = groupedCourse[j]['course_name'];
+                    // row.course_roomDetail = groupedCourse[j]['course_roomDetail']
                 }
                 rows.push(row);
             }
