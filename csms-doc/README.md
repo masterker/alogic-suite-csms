@@ -27,10 +27,15 @@ fdu-csms为复旦大学数据库课程大作业--高校选课管理系统。
 	- 评教
 	
 <hr>
-csms技术实现：
-	+ 后台服务采用开源微服务框架alogic，
-	+ 前端页面采用Bootstrap作为css框架，Backbone.js作为MVC框架，
-	+ 二者通过RESTful JSON接口对接。
+
+fdu-csms技术实现：
+
+	* 后台服务采用开源微服务框架alogic，
+	
+	* 前端页面采用Bootstrap作为css框架，Backbone.js作为MVC框架，
+	
+	* 二者通过RESTful JSON接口对接。
+	
 <hr>
 
 项目源码解读：
