@@ -36,9 +36,9 @@ public class LoginCode extends Servant {
 	protected int imageHeight = 26;
 
 	/**
-	 * 干扰线条数,可通过参数line.disturbance配置,缺省40条
+	 * 干扰线条数,可通过参数line.disturbance配置,缺省20条
 	 */
-	protected int disturbanceLines = 40;
+	protected int disturbanceLines = 20;
 
 	/**
 	 * 字体，可通过参数text.font配置，缺省为Fixedsys
@@ -58,7 +58,7 @@ public class LoginCode extends Servant {
 		imageWidth = PropertiesConstants.getInt(p, "image.width", imageWidth, true);
 		imageHeight = PropertiesConstants.getInt(p, "image.height", imageHeight, true);
 		disturbanceLines = PropertiesConstants.getInt(p, "line.disturbance", disturbanceLines, true);
-		font = new Font(PropertiesConstants.getString(p, "text.font", "Fixedsys", true), Font.CENTER_BASELINE, 18);
+		font = new Font(PropertiesConstants.getString(p, "text.font", "Times New Roman", true), Font.CENTER_BASELINE, 18);
 		ignoreCase = PropertiesConstants.getBoolean(p, "text.ignoreCase", ignoreCase, true);
 	}
 

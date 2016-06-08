@@ -14,6 +14,8 @@ import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 import com.logicbus.backend.Context;
 import com.logicbus.backend.ServantException;
+import com.logicbus.backend.Session;
+import com.logicbus.backend.SessionManager;
 import com.logicbus.backend.message.JsonMessage;
 import com.logicbus.dbcp.processor.Preprocessor;
 import com.logicbus.dbcp.sql.DBTools;
@@ -36,6 +38,13 @@ public class New extends IDUBase {
 
 	@Override
 	protected void doIt(Context ctx, JsonMessage msg, Connection conn) throws Exception {
+
+		// 服务权限判断
+		Session session = SessionManager.get().getSession(ctx, false);
+		String role = session == null ? "anonymous" : session.hGet("user", "loginType", "anonymous");
+		if (!"teacher".equals(role)) {
+			throw new ServantException("core.unauthorized", role + "用户无权访问本服务");
+		}
 
 		long seqId = SeqTool.nextLong("courseId");
 		String courseId = Long.toString(seqId);

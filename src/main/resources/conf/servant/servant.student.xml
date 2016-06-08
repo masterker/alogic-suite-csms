@@ -9,7 +9,7 @@
 				note="教务员查看全部学生列表"
 				visible="protected" 
 				log="brief" 
-				module="com.alogic.idu.service.ListAll">
+				module="edu.fdu.csms.service.student.ListStudent">
 				<properties>
 					<parameter id="servant.maxActive" value="10" />
 					<parameter id="servant.maxIdle" value="1" />
