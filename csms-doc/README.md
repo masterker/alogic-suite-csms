@@ -76,11 +76,11 @@ fdu-csms技术实现：
 		* common 自定义公共组件；
 		* app WEB应用
 			- api.js 通过restful接口向服务端发送请求，交互数据；
-			- enums.js 定义枚举类型及映射关系;
-			- xk.js 登录状态存储;
-			- util.js 利用正则表达式转化复杂数据;
-			- router folder 页面路由控制;
-			- view folder 页面视图控制.
+			- enums.js 定义枚举类型及映射关系；
+			- xk.js 登录状态存储；
+			- util.js 利用正则表达式转化复杂数据；
+			- router folder 页面路由控制；
+			- view folder 页面视图控制。
 
 更新历史：
 
@@ -89,3 +89,4 @@ fdu-csms技术实现：
 
 - 1.0.1 [20160608 limf]
 	+ 增加前端页面
+	+ 增加技术总结
